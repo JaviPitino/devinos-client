@@ -15,10 +15,10 @@ function Navbar() {
   return (
     <div>
       {isLogin === true ? (
-        <div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/wines">Vinos</NavLink>
-          <NavLink to="/bodegas">Bodegas</NavLink>
+        <div className="navbar">
+          <NavLink className='navbar-btn' to="/">Home</NavLink>
+          <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
+          <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
 
           <button onClick={handleLogout}>Cerrar sesión</button>
         
@@ -33,11 +33,11 @@ function Navbar() {
       )}
       {user !== null && (
         <div>
-          <h3>
+          <h3 className="saludo">
             Bienvenid@:{" "}
             {user.username[0].toUpperCase() + user.username.slice(1)}
           </h3>{" "}
-          <p>Email: {user.email}</p>{""}
+          <p className="saludo">{user.email}</p>{""}
           <img src={user.image} alt="imagen de perfil" />
         </div>
       )}

@@ -7,6 +7,7 @@ import Signup from './pages/auth/Signup';
 import Bodegas from './pages/Bodegas';
 import Home from './pages/Home';
 import Wines from './pages/Wines';
+import WinesDetails from './pages/WinesDetails';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path={"/signup"} element={ <Signup /> } />
         <Route path={"/login"} element={ <Login /> } />
-        <Route path={"/wines"} element={ <Wines /> } />
+        <Route path={"/wines"} element={ <Wines persona="Juanito" /> } />
+        <Route path={"/wines/:id"} element={ <WinesDetails /> } />
         <Route path={"/bodegas"} element={ <Bodegas /> } />
 
       </Routes>

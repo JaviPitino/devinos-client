@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { winesListService } from "../services/wines.services";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faStar} from '@fortawesome/free-solid-svg-icons'
 
 function Wines() {
   const navigate = useNavigate();
@@ -36,7 +38,7 @@ function Wines() {
 
   return (
     <div>
-      <h3>Lista de vinos</h3>
+      <h3 className="title">Vinos disponibles</h3>
       {wines.map((eachWine) => {
         let emptyStar = "☆";
         let filledStar = "★";
@@ -44,25 +46,29 @@ function Wines() {
         const rating =
           filledStar.repeat(Math.round(eachWine.puntuacion)) +
           emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
+
         return (
-          <div>
-            <div>
+          <div className="wine-container">
+            <Link to={`/wines/${eachWine._id}`}>
+            <div className="img-wine">
               <img src={eachWine.image} alt="wine" width={50} />
             </div>
-            <div key={eachWine._id}>
-              <h4>{eachWine.name}</h4>
+            <div className="info-wine" key={eachWine._id}>
+              <h4 className="wine-title" >{eachWine.name}</h4>
               {eachWine.bodegaId}
               <p> {eachWine.tipo}</p>
-              <h6>{eachWine.year}</h6>
-              <h5>{rating}</h5>
-              <span>
+              <h6 className="wine-year" >{eachWine.year}</h6>
+              <h5 className="wine-rating" >{rating}</h5>
+              
+              <p>
                 {eachWine.uva.map((item) => {
-                  return <span>{item + " | "}</span>;
+                  return <span className="wine-uva">{item + ". "}</span>;
                 })}
-              </span>
+              </p>
               <br />
               <br />
             </div>
+            </Link>
           </div>
         );
       })}
