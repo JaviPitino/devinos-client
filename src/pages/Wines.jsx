@@ -15,7 +15,7 @@ function Wines() {
   // 2. ComponentDidMount
   useEffect(() => {
     getAllWines();
-  }, {});
+  }, []);
 
   // 3. Funcion que busca la Data en la API
   const getAllWines = async () => {

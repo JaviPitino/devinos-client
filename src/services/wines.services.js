@@ -8,4 +8,8 @@ const getWineDetailsService = (id) => {
   return service.get(`/wines/${id}`)
 }
 
-export { winesListService, getWineDetailsService }
+const addNewWineService = (newWine) => {
+  return service.post('/wines', newWine)
+}
+
+export { winesListService, getWineDetailsService, addNewWineService }

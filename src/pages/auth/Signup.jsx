@@ -10,7 +10,7 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
+  const [ image, setImage ] = useState("")
 
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -32,9 +32,10 @@ function Signup() {
 
     try {
 
-      await signupService(user);
+      const response = await signupService(user);
+      setImage(response.data.image)
       console.log(user);
-      setImage(user.image)
+      
       navigate("/login")
 
     } catch (err) {

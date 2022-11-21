@@ -1,44 +1,74 @@
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
+import { getProfileDetailsService } from "../services/auth.service";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+
 
 function Navbar() {
   const { isLogin, user, authenticatedUser } = useContext(AuthContext);
 
   console.log(user)
+  const navigate = useNavigate()
+
+  // const [ profile, setProfile ] = useState(null)
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticatedUser();
   };
 
+  // useEffect(() => {
+  //   getProfile()
+  // }, [])
+
+  // const getProfile = async () => {
+
+  //   try {
+  //     const response = await getProfileDetailsService(user._id)
+  //     console.log(response.data)
+  //     setProfile(response.data)
+
+  //   } catch(err) {
+  //     navigate("/error")
+  //   }
+  // }
+
+  // if (!profile) {
+  //   return <h3>...loading</h3>
+  // }
+
   return (
     <div>
       {isLogin === true ? (
-        <div className="navbar">
+        <nav className="navbar">
           <NavLink className='navbar-btn' to="/">Home</NavLink>
           <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
           <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
+          <NavLink className='navbar-btn' to="/profile">Perfil</NavLink>
 
           <button onClick={handleLogout}>Cerrar sesión</button>
         
-        </div>
+        </nav>
       ) : (
-        <nav>
-          <NavLink to="/signup"> Registrar </NavLink>
-          <NavLink to="/login"> Acceder </NavLink>
+        <nav className="navbar">
+          <NavLink className='navbar-btn' to="/">Home</NavLink>
+          <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
+          <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
+          <NavLink className='navbar-btn' to="/signup"> Registrar </NavLink>
+          <NavLink className='navbar-btn' to="/login"> Acceder </NavLink>
 
 
         </nav>
       )}
       {user !== null && (
-        <div>
-          <h3 className="saludo">
-            Bienvenid@:{" "}
+        <div className="container-perfil">
+          <h4 className="saludo">
             {user.username[0].toUpperCase() + user.username.slice(1)}
-          </h3>{" "}
-          <p className="saludo">{user.email}</p>{""}
-          <img src={user.image} alt="imagen de perfil" />
+          </h4>{" "}
+          <img className="saludo" src={user.image} alt="imagen perfil" width={25}/>
+        <NavLink to={`/profile/${user._id}/edit`}><FontAwesomeIcon icon={faPenToSquare} /></NavLink> 
         </div>
       )}
     </div>

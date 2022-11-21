@@ -26,11 +26,17 @@
   color: rgb(114, 55, 55)
 }
 
+.container-perfil {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .saludo {
   margin: 0;
   display: flex;
   justify-content: flex-end;
-  padding-right: 1.5em;
+  padding-right: 1em;
 }
 
 /* **** WINES **** */
@@ -47,19 +53,13 @@ a {
 }
 
 .wine-container {
-  margin-left: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 50vw;
+  width: 50%;
   transition: transform .2s;
-}
-
-.wine-container-det {
-  margin-left: 100px;
-  display: flex;
-  align-items: flex-start;
-  width: 50vw;
 }
 
 .wine-container:hover {
@@ -67,6 +67,13 @@ a {
   border-radius: 12px;
   transform: scale(1.05);
   box-shadow: 3px 3px 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+.wine-container-det {
+  margin-left: 10%;
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
 }
 
 .img-wine {
