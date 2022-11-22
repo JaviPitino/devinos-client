@@ -4,40 +4,18 @@ import { AuthContext } from "../context/auth.context";
 import { getProfileDetailsService } from "../services/auth.service";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-
+import Profile from "../pages/profile/Profile";
 
 function Navbar() {
   const { isLogin, user, authenticatedUser } = useContext(AuthContext);
 
   console.log(user)
-  const navigate = useNavigate()
-
-  // const [ profile, setProfile ] = useState(null)
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticatedUser();
   };
 
-  // useEffect(() => {
-  //   getProfile()
-  // }, [])
-
-  // const getProfile = async () => {
-
-  //   try {
-  //     const response = await getProfileDetailsService(user._id)
-  //     console.log(response.data)
-  //     setProfile(response.data)
-
-  //   } catch(err) {
-  //     navigate("/error")
-  //   }
-  // }
-
-  // if (!profile) {
-  //   return <h3>...loading</h3>
-  // }
 
   return (
     <div>
@@ -46,7 +24,7 @@ function Navbar() {
           <NavLink className='navbar-btn' to="/">Home</NavLink>
           <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
           <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
-          <NavLink className='navbar-btn' to="/profile">Perfil</NavLink>
+          <NavLink className='navbar-btn' to="/profile">Mi perfil</NavLink>
 
           <button onClick={handleLogout}>Cerrar sesión</button>
         
@@ -62,15 +40,16 @@ function Navbar() {
 
         </nav>
       )}
-      {user !== null && (
+      {/* {user !== null && (
         <div className="container-perfil">
           <h4 className="saludo">
-            {user.username[0].toUpperCase() + user.username.slice(1)}
+            <NavLink to={'/profile'}>{user.username[0].toUpperCase() + user.username.slice(1)}</NavLink>  
           </h4>{" "}
           <img className="saludo" src={user.image} alt="imagen perfil" width={25}/>
-        <NavLink to={`/profile/${user._id}/edit`}><FontAwesomeIcon icon={faPenToSquare} /></NavLink> 
+        <NavLink to={`/profile/${user._id}/edit`} className="saludo"><FontAwesomeIcon icon={faPenToSquare} /></NavLink> 
         </div>
-      )}
+      )} */}
+      
     </div>
   );
 }

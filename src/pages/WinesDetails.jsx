@@ -38,9 +38,9 @@ function WinesDetails(props) {
         </div>
         <div className="info-wine" key={wineDetail._id}>
           <h4 className="wine-title-det">{wineDetail.name}</h4>
-          {wineDetail.bodegaId}
+          
           <p> {wineDetail.tipo}</p>
-          <h6 className="wine-year">{wineDetail.year}</h6>
+          <h6 className="bodega-wine-year">{wineDetail.year}</h6>
           {/* <h5 className="wine-rating">{rating}</h5> */}
 
           <p>

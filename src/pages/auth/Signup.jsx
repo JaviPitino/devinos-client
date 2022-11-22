@@ -33,7 +33,7 @@ function Signup() {
     try {
 
       const response = await signupService(user);
-      setImage(response.data.image)
+      setImage(response.data)
       console.log(user);
       
       navigate("/login")

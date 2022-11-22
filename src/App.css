@@ -6,6 +6,7 @@
   padding: 0;
   background-color: rgb(250, 250, 250);
   box-sizing: border-box;
+  height: 100vh;
 }
 
 /* **** NAVBAR **** */
@@ -41,9 +42,9 @@
 
 /* **** WINES **** */
 a {
-  text-decoration: none;
-  color: black;
-  display: flex;
+  text-decoration: none!important;
+  color: black!important;
+  display: flex!important;
 }
 
 .title {
@@ -129,3 +130,27 @@ span {
   font-weight: 300;
   line-height: 1.3em;
 }
+
+/* **** BODEGAS **** */
+.form-center {
+  display:flex!important;
+  justify-content: center!important;
+  /* align-items: center!important; */
+}
+
+.bodega-wine-details-tipo {
+  font-size: .8em;
+  font-weight: 400;
+}
+
+.bodega-wine-name {
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.bodega-wine-year {
+  font-size: 0.5em;
+  
+} 
+

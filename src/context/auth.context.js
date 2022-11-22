@@ -1,14 +1,15 @@
 import { createContext, useEffect, useState } from 'react'
 import { verifyService } from '../services/auth.service'
 
+
 const AuthContext = createContext()
 
 function AuthWrapper(props) {
 
-
   // Estados y funciones
   const [isLogin, setIsLogin ] = useState(false)
   const [ user, setUser ] = useState(null)
+
 
   const authenticatedUser = async () => {
 

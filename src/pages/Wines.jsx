@@ -55,7 +55,7 @@ function Wines() {
             </div>
             <div className="info-wine" key={eachWine._id}>
               <h4 className="wine-title" >{eachWine.name}</h4>
-              {eachWine.bodegaId}
+              
               <p> {eachWine.tipo}</p>
               <h6 className="wine-year" >{eachWine.year}</h6>
               <h5 className="wine-rating" >{rating}</h5>
