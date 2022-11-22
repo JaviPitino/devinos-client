@@ -6,7 +6,7 @@
   padding: 0;
   background-color: rgb(250, 250, 250);
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
 }
 
 /* **** NAVBAR **** */
@@ -129,6 +129,10 @@ span {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   line-height: 1.3em;
+}
+
+.btn-filtrar {
+  margin-right: 1.5em!important;
 }
 
 /* **** BODEGAS **** */

@@ -42,7 +42,7 @@ function Profile() {
           <h4 className="saludo">
             {profileDetails.username[0].toUpperCase() + profileDetails.username.slice(1)} 
           </h4>{" "}
-          <img className="saludo" src={profileDetails.image} alt="imagen perfil" width={25}/>
+          <img className="saludo" src={profileDetails.image} alt="imagen perfil" width={50}/>
         <NavLink to={`/profile/${profileDetails._id}/edit`} className="saludo"><FontAwesomeIcon icon={faPenToSquare} /></NavLink> 
         </div>
       )}
