@@ -24,6 +24,7 @@ function WinesEdit() {
   });
 
   const [image, setImage] = useState("");
+  // const [bodega, setBodega] = useState({})
   const [allBodegas, setAllBodegas] = useState([]);
 
   const uva = [
@@ -56,28 +57,6 @@ function WinesEdit() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const theWine = {
-        name: form.name,
-        bodega: form.bodega,
-        tipo: form.tipo,
-        uva: form.uva,
-        year: form.year,
-        description: form.description,
-        puntuacion: form.puntuacion,
-        image,
-      };
-
-      await editWineService(id, theWine);
-      navigate(`/wines/${id}`);
-    } catch (err) {
-      navigate("/error");
-    }
-  };
-
   // ComponentDidMount
   useEffect(() => {
     getWineDetails();
@@ -96,9 +75,14 @@ function WinesEdit() {
         uva,
         year,
         description,
-        puntuacion,
-        image,
+        puntuacion
       });
+      setImage(image)
+
+      // console.log({bodega: bodega[0].name})
+      // setBodega({bodega: bodega[0].name})
+      // console.log(bodega)
+
     } catch (err) {
       navigate("/error");
     }
@@ -121,6 +105,30 @@ function WinesEdit() {
       navigate("/error");
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const theWine = {
+        name: form.name,
+        bodega: form.bodega,
+        tipo: form.tipo,
+        uva: form.uva,
+        year: form.year,
+        description: form.description,
+        puntuacion: form.puntuacion,
+        image,
+      };
+
+      await editWineService(id, theWine);
+      navigate(`/wines/${id}`);
+
+    } catch (err) {
+      navigate("/error");
+    }
+  };
+
 
   return (
     <div className="form-center container-fluid">
