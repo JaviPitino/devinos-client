@@ -14,6 +14,9 @@ import Error from './pages/Error'
 import ProfileEdit from './pages/profile/ProfileEdit';
 import BodegasCreate from './pages/bodegas/BodegasCreate';
 import BodegaDetails from './pages/bodegas/BodegaDetails';
+import IsPrivate from './components/IsPrivate';
+import IsAdmin from './components/IsAdmin';
+import WinesEdit from './pages/WinesEdit';
 
 function App() {
   return (
@@ -23,17 +26,22 @@ function App() {
       <Routes>
 
         <Route path="/" element={ <Home />} />
+        {/* Autorizacion */}
         <Route path={"/signup"} element={ <Signup /> } />
         <Route path={"/login"} element={ <Login /> } />
-        <Route path={"/wines"} element={ <Wines persona="Juanito" /> } />
-        <Route path={"/wines/:id"} element={ <WinesDetails /> } />
-        <Route path={"/wines/create"} element={ <WinesCreate /> } />
-        <Route path={"/bodegas"} element={ <Bodegas /> } />
-        <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
-        <Route path={'/bodegas/create'} element={ <BodegasCreate /> } />
-        <Route path={"/profile"} element={ <Profile /> } />
+        {/* Perfil */}
+        <Route path={"/profile"}  end={true} element={ <Profile /> } />
         <Route path={"/profile/:id/edit"} element={<ProfileEdit />} />
-
+        {/* Vinos */}
+        <Route path={"/wines"} end={true} element={ <Wines persona="Juanito" /> } />
+        <Route path={"/wines/:id"} element={ <WinesDetails /> } />
+        <Route path={"/wines/:id/edit"} element={ <IsPrivate> <IsAdmin> <WinesEdit /> </IsAdmin> </IsPrivate> } />
+        <Route path={"/wines/create"} element={ <IsPrivate> <IsAdmin> <WinesCreate /> </IsAdmin> </IsPrivate> } />
+        {/* Bodegas */}
+        <Route path={"/bodegas"} end={true} element={ <Bodegas /> } />
+        <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
+        <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate>   } />
+        {/* Error */}
         <Route path={"/error"} element={ <Error /> } />
 
       </Routes>

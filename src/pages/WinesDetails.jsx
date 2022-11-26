@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { getWineDetailsService } from "../services/wines.services";
+import IsAdmin from '../components/IsAdmin'
 
 function WinesDetails(props) {
   const navigate = useNavigate();
@@ -32,15 +33,20 @@ function WinesDetails(props) {
   return (
     <div>
       <h3 className="title">Detalles</h3>
+    <div className="container-grande">
       <div className="wine-container-det">
         <div>
-          <img className="img-wine-det" src={wineDetail.image} alt="img-wine" width={120} />
+          <img
+            className="img-wine-det"
+            src={wineDetail.image}
+            alt="img-wine"
+            width={120}
+          />
         </div>
         <div className="info-wine" key={wineDetail._id}>
           <h4 className="wine-title-det">{wineDetail.name}</h4>
-          
           <p> {wineDetail.tipo}</p>
-          <h6 className="bodega-wine-year">{wineDetail.year}</h6>
+          <h6 className="wine-year">{wineDetail.year}</h6>
           {/* <h5 className="wine-rating">{rating}</h5> */}
 
           <p>
@@ -51,8 +57,30 @@ function WinesDetails(props) {
           <p className="wine-description">{wineDetail.description}</p>
           <br />
           <br />
+          <IsAdmin>
+            <Link to={`/wines/${id}/edit`}> <button>Editar</button> </Link>  
+          </IsAdmin>
         </div>
       </div>
+      <div className="card-bodega">
+        <h5 className="title-bodega-wine-detail">La bodega</h5> 
+        {wineDetail.bodega.map((eachBodega) => {
+          return (
+            <div key={eachBodega._id} className="bodega-container-details" >
+              <div  className="img-bodega-wine-details">
+                <img src={eachBodega.image} alt="imagen de la bodega" width={150} />
+              </div>
+              <div>
+                <span className="bodega-wine-name">{eachBodega.name}</span>
+                <p>{eachBodega.region}</p>
+                <p className="bodega-wine-description">{eachBodega.description}</p>
+              </div>
+              <Link to={`/bodegas/${eachBodega._id}`} className="leer-mas">Leer más</Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
     </div>
   );
 }

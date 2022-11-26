@@ -86,7 +86,8 @@ a {
 .img-wine-det {
   display: flex;
   align-items: flex-start;
-  padding-right: 2.5em; 
+  padding-right: 2em; 
+  width: 100px;
 }
 
 .info-wine {
@@ -94,13 +95,13 @@ a {
 }
 
 .info-wine > h5, h6, p {
-  margin: 5px 0;
+  margin: 0;
   text-align: left;
 }
 
 .wine-title {
   margin: 0;
-  padding: 1.5em 2em 0 0;
+  padding: 0.8em 2em 0.3em 0;
   font-size: 1.5em;
   text-align: left;
 }
@@ -143,18 +144,82 @@ span {
 }
 
 .bodega-wine-details-tipo {
-  font-size: .8em;
+  font-size: .7em;
   font-weight: 400;
+  margin: 0;
 }
 
 .bodega-wine-name {
-  font-size: 0.8em;
+  font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
+  display: flex;
+  align-items: flex-start;
 }
 
 .bodega-wine-year {
   font-size: 0.5em;
-  
-} 
+}
 
+.bodega-wine-description {
+
+  width: 250px;
+  max-height: 245px;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.leer-mas {
+  padding: 7px;
+  border: 1px solid crimson;
+  width: 100px;
+  border-radius: 4px;
+  color: crimson!important;
+  font-family: 'Roboto',sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.leer-mas:hover {
+  background-color: crimson;
+  color: whitesmoke!important;
+}
+
+.container-grande {
+  display: flex;
+}
+
+.card-bodega {
+  background-color: rgb(255, 233, 233);
+  padding: 2.5em;
+  border-radius: 10px;
+}
+
+.title-bodega-wine-detail {
+  text-align: left;
+}
+
+.bodega-container-details {
+  display: block;
+
+}
+
+.img-bodega-wine-details {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+.bodega-name-wines {
+  padding-bottom: 0.3em;
+  width: 250px;
+  border-top: 1px solid crimson;
+  border-bottom: 1px solid crimson;
+}
+
+.flechita {
+  color: crimson!important;
+}

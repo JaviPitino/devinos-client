@@ -1,22 +1,20 @@
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-import { getProfileDetailsService } from "../services/auth.service";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import Profile from "../pages/profile/Profile";
+import IsAdmin from "./IsAdmin";
 
 function Navbar() {
   const { isLogin, user, authenticatedUser } = useContext(AuthContext);
 
-  console.log(user)
-
+  
+  
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticatedUser();
   };
-
-
+  
+  console.log(user)
+  console.log(isLogin)
   return (
     <div>
       {isLogin === true ? (
@@ -25,7 +23,10 @@ function Navbar() {
           <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
           <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
           <NavLink className='navbar-btn' to="/profile">Mi perfil</NavLink>
-
+          <IsAdmin>
+            <NavLink className='navbar-btn' to="/wines/create">Añade un vino</NavLink>
+            <NavLink className='navbar-btn' to="/bodegas/create">Añade una bodega</NavLink>
+          </IsAdmin>
           <button onClick={handleLogout}>Cerrar sesión</button>
         
         </nav>

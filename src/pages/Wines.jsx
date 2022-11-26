@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { winesListService } from "../services/wines.services";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons'
-import { Button } from 'react-bootstrap'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
+import Search from "../components/Search";
 
 function Wines() {
   const navigate = useNavigate();
 
   // 1. Crear estados
   const [wines, setWines] = useState([]);
-
-  const [ allWinesToDisplay, setAllWinesToDisplay ] = useState([])
+  // const [ newSearch, setNewSearch ] = useState("")
+  const [allWinesToDisplay, setAllWinesToDisplay] = useState([]);
 
   // 2. ComponentDidMount
   useEffect(() => {
@@ -23,7 +24,7 @@ function Wines() {
     try {
       const response = await winesListService();
       setWines(response.data);
-      setAllWinesToDisplay(response.data)
+      setAllWinesToDisplay(response.data);
       console.log(response.data);
     } catch (err) {
       if (err.response.status === 401) {
@@ -34,41 +35,71 @@ function Wines() {
     }
   };
 
+  // lift the State Up
+  // const liftStateUp = (funcion) => {
+  //   setNewSearch(funcion)
+  // }
+
   // Filtrar tintos
   const HandleFilterTintos = () => {
-    const winesCopyList = [...wines]
-    const filterArrTinto = winesCopyList.filter((eachWine) => eachWine.tipo === 'Tinto')
-    setAllWinesToDisplay(filterArrTinto)
-  }
+    const winesCopyList = [...wines];
+    const filterArrTinto = winesCopyList.filter(
+      (eachWine) => eachWine.tipo === "Tinto"
+    );
+    setAllWinesToDisplay(filterArrTinto);
+    // setNewSearch("")
+  };
+  // console.log(newSearch)
 
   // Filtrar rosados
   const HandleFilterRosados = () => {
-    const winesCopyList = [...wines]
-    const filterArrTinto = winesCopyList.filter((eachWine) => eachWine.tipo === 'Rosado')
-    setAllWinesToDisplay(filterArrTinto)
-  }
+    const winesCopyList = [...wines];
+    const filterArrTinto = winesCopyList.filter(
+      (eachWine) => eachWine.tipo === "Rosado"
+    );
+    setAllWinesToDisplay(filterArrTinto);
+    // setNewSearch("")
+  };
 
   // Filtrar rosados
   const HandleFilterBlancos = () => {
-    const winesCopyList = [...wines]
-    const filterArrTinto = winesCopyList.filter((eachWine) => eachWine.tipo === 'Blanco')
-    setAllWinesToDisplay(filterArrTinto)
-  }
+    const winesCopyList = [...wines];
+    const filterArrTinto = winesCopyList.filter(
+      (eachWine) => eachWine.tipo === "Blanco"
+    );
+    setAllWinesToDisplay(filterArrTinto);
+    // setNewSearch("")
+  };
 
   // Mostrar todos
   const handleAllWines = () => {
-    const winesCopyList = [...wines]
-    setAllWinesToDisplay(winesCopyList)
-  }
+    const winesCopyList = [...wines];
+    setAllWinesToDisplay(winesCopyList);
+    // setNewSearch("")
+  };
 
   // Ordenar
   const handleSort = () => {
     const winesCopyList = [...allWinesToDisplay];
-    let newSortedList = winesCopyList.sort((elem1, elem2) => (elem1.name > elem2.name ? 1 : elem1.name < elem2.name ? -1 : 0));
-    if(newSortedList[0] === allWinesToDisplay[0]) {
-      newSortedList = [...allWinesToDisplay].sort((elem2, elem1) => (elem1.name > elem2.name ? 1 : elem1.name < elem2.name ? -1 : 0))
+    let newSortedList = winesCopyList.sort((elem1, elem2) =>
+      elem1.name > elem2.name ? 1 : elem1.name < elem2.name ? -1 : 0
+    );
+    if (newSortedList[0] === allWinesToDisplay[0]) {
+      newSortedList = [...allWinesToDisplay].sort((elem2, elem1) =>
+        elem1.name > elem2.name ? 1 : elem1.name < elem2.name ? -1 : 0
+      );
     }
     setAllWinesToDisplay(newSortedList);
+  };
+
+  // Search
+  const searchList = (search) => {
+    const winesCopyList = [...wines];
+    const filterArr = winesCopyList.filter((eachWine) => {
+      return eachWine.name.toUpperCase().includes(search.toUpperCase());
+    });
+    setAllWinesToDisplay(filterArr);
+    // setNewSearch(search = "")
   };
 
   if (!wines) {
@@ -77,12 +108,35 @@ function Wines() {
 
   return (
     <div>
+      <Search searchList={searchList} /*funcion={liftStateUp}*/ />
       <h3 className="title">Vinos disponibles</h3>
-      <Button className="btn-filtrar" onClick={handleAllWines} variant="danger">Todos</Button>
-      <Button className="btn-filtrar"  onClick={HandleFilterTintos} variant="outline-danger">Tintos</Button>
-      <Button className="btn-filtrar"  onClick={HandleFilterRosados} variant="outline-danger">Rosados</Button>
-      <Button className="btn-filtrar" onClick={HandleFilterBlancos} variant="outline-danger">Blancos</Button>
-      <Button className="btn-filtrar" onClick={handleSort}>Ordenar</Button>
+      <Button className="btn-filtrar" onClick={handleAllWines} variant="danger">
+        Todos
+      </Button>
+      <Button
+        className="btn-filtrar"
+        onClick={HandleFilterTintos}
+        variant="outline-danger"
+      >
+        Tintos
+      </Button>
+      <Button
+        className="btn-filtrar"
+        onClick={HandleFilterRosados}
+        variant="outline-danger"
+      >
+        Rosados
+      </Button>
+      <Button
+        className="btn-filtrar"
+        onClick={HandleFilterBlancos}
+        variant="outline-danger"
+      >
+        Blancos
+      </Button>
+      <Button className="btn-filtrar" onClick={handleSort}>
+        Ordenar
+      </Button>
       <br />
       <br />
 
@@ -95,19 +149,32 @@ function Wines() {
           emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
 
         return (
-          
           <div className="wine-container" key={eachWine._id}>
-            <Link to={`/wines/${eachWine._id}`}>
             <div className="img-wine">
               <img src={eachWine.image} alt="wine" width={50} />
             </div>
             <div className="info-wine" key={eachWine._id}>
-              <h4 className="wine-title" >{eachWine.name}</h4>
-              
+              <Link to={`/wines/${eachWine._id}`}>
+                <h4 className="wine-title">{eachWine.name}</h4>
+              </Link>
+              {eachWine.bodega.map((each) => {
+                return (
+                  <div className="bodega-name-wines" value={each._id}>
+                    <Link to={`/bodegas/${each._id}`}>
+                      Bodega: {each.name}{" "}
+                      <span className="flechita">
+                        {" "}
+                        &nbsp;  --
+                      </span>{" "}
+                    </Link>
+                  </div>
+                );
+              })}
+
               <p> {eachWine.tipo}</p>
-              <h6 className="wine-year" >{eachWine.year}</h6>
-              <h5 className="wine-rating" >{rating}</h5>
-              
+              <h6 className="wine-year">{eachWine.year}</h6>
+              <h5 className="wine-rating">{rating}</h5>
+
               <p>
                 {eachWine.uva.map((item) => {
                   return <span className="wine-uva">{item + ". "}</span>;
@@ -116,12 +183,10 @@ function Wines() {
               <br />
               <br />
             </div>
-            </Link>
           </div>
         );
       })}
     </div>
-    
   );
 }
 

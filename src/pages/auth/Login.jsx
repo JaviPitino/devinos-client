@@ -1,7 +1,8 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../../services/auth.service";
-import { AuthContext } from '../../context/auth.context'
+import { AuthContext } from '../../context/auth.context';
+import { Form, Button } from 'react-bootstrap'
 
 
 function Login() {
@@ -49,20 +50,22 @@ function Login() {
   }
 
   return (
-    <div>
-      <div>
+    <div className="form-center container-fluid">
+      <div className="row col-3 map_section">
         <h3>Login</h3>
-      </div>
-      <form onSubmit={handleLogin}>
-        <label>Email: </label>
-        <input type="email" name="email" value={email} onChange={handleEmailChange} />
-        <br />
-        <label>Contraseña: </label>
-        <input type="password" name="password" value={password} onChange={handlePasswordChange} />
-        <br />
+      
+      <Form onSubmit={handleLogin}>
+      <Form.Group className="mb-4" controlId="formBasicEmail">
+        <Form.Control type="email" name="email" value={email} onChange={handleEmailChange} placeholder="Inserta tu email" />
+      </Form.Group>
+      <Form.Group>
+        <Form.Control type="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Contraseña" />
+      </Form.Group>
         { errorMessage !== null && <p>{errorMessage}</p> }
-        <button>Acceder</button>
-      </form>
+        <br />
+        <Button type="submit" variant="danger">Acceder</Button>
+      </Form>
+      </div>
     </div>
   )
 }

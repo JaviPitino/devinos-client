@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import uploadService from "../../services/profile.service";
 import { addNewBodegaService } from "../../services/bodegas.services";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { winesListService } from "../../services/wines.services";
 
 function BodegasCreate() {
@@ -39,7 +39,7 @@ function BodegasCreate() {
       e.target.selectedOptions,
       (option) => option.value
     );
-    setWines(value)
+    setWines(value);
   };
 
   // 3. Submit
@@ -52,7 +52,7 @@ function BodegasCreate() {
         region,
         description,
         wines,
-        image,
+        image
       };
 
       await addNewBodegaService(newBodega);
@@ -63,85 +63,80 @@ function BodegasCreate() {
   };
 
   useEffect(() => {
-    getAllWines()
-  }, [])
+    getAllWines();
+  }, []);
 
   const getAllWines = async () => {
-
     try {
-
-      const response = await winesListService()
-      console.log(response.data)
-      setAllWines(response.data)
-    } catch(err) { navigate('/error') }
-  }
+      const response = await winesListService();
+      // console.log(response.data)
+      setAllWines(response.data);
+      // setWines(response.data)
+    } catch (err) {
+      navigate("/error");
+    }
+  };
 
   if (!allWines) {
-    return <h3>...loading</h3>
+    return <h3>...loading</h3>;
   }
+
+  console.log(allWines);
 
   return (
     <div className="form-center container-fluid">
       <div className="row col-6 map_section">
-      <h4>Añade una bodega</h4>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-4" controlId="formBasicEmail">
-          <Form.Control
-            type="text"
-            name="name"
-            onChange={handleNameChange}
-            value={name}
-            placeholder='Nombre'
-          />
-         </Form.Group>
-         <Form.Group className="mb-4" controlId="formBasicEmail">
-          <Form.Control
-            type="text"
-            name="region"
-            onChange={handleRegionChange}
-            value={region}
-            placeholder='Ciudad (País)'
-          />
-         </Form.Group>
-         <Form.Group className="mb-4" controlId="formBasicEmail">
-          <Form.Control
-            type="text"
-            name="description"
-            onChange={handleDescriptionChange}
-            value={description}
-            placeholder='Descripción de la bodega'
-          />
-         </Form.Group>
-         <Form.Select 
-          name="wines"
-          onChange={handleWinesChange}
-          multiple
-          >
-            { allWines.map((eachwine) => {
-              return(
-                <div key={eachwine._id}>
-                  <option value={eachwine._id}>
-                    {eachwine.name}
-                  </option>
-                </div>
-              )
+        <h4>Añade una bodega</h4>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-4" controlId="formBasicEmail">
+            <Form.Control
+              type="text"
+              name="name"
+              onChange={handleNameChange}
+              value={name}
+              placeholder="Nombre"
+            />
+          </Form.Group>
+          <Form.Group className="mb-4" controlId="formBasicEmail">
+            <Form.Control
+              type="text"
+              name="region"
+              onChange={handleRegionChange}
+              value={region}
+              placeholder="Ciudad (País)"
+            />
+          </Form.Group>
+          <Form.Group className="mb-4" controlId="formBasicEmail">
+            <Form.Control
+              type="text"
+              name="description"
+              onChange={handleDescriptionChange}
+              value={description}
+              placeholder="Descripción de la bodega"
+            />
+          </Form.Group>
+          <Form.Select name="wines" onChange={handleWinesChange} multiple>
+            {allWines.map((eachwine) => {
+              return (
+                  <option value={eachwine._id}>{eachwine.name}</option>
+              );
             })}
           </Form.Select>
           <br />
           <Form.Group>
-              <Form.Control
+            <Form.Control
               onChange={handleImageChange}
               type="file"
               name="image"
               width={200}
-              >
+            >
               {/* Selecciona una imagen */}
-              </Form.Control>
-            </Form.Group> 
-        <br />
-        <button> Agregar Bodega </button>
-        <br />
-      </Form>
+            </Form.Control>
+          </Form.Group>
+          <br />
+          <button> Agregar Bodega </button>
+          <br />
+        </Form>
       </div>
     </div>
   );

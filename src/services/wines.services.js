@@ -12,4 +12,8 @@ const addNewWineService = (newWine) => {
   return service.post('/wines', newWine)
 }
 
-export { winesListService, getWineDetailsService, addNewWineService }
+const editWineService = (id, theWine) => {
+  return service.patch(`/wines/${id}`, theWine)
+}
+
+export { winesListService, getWineDetailsService, addNewWineService, editWineService }

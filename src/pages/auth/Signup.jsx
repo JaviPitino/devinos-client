@@ -11,6 +11,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ image, setImage ] = useState("")
+  const [ isAdmin, setIsAdmin ] = useState(false)
 
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -18,6 +19,7 @@ function Signup() {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+ 
 
   // Llamada al service (axios)
   const handleSignup = async (e) => {

@@ -60,7 +60,7 @@ function BodegaDetails() {
                   </div>
                   <div>
                     <span className="bodega-wine-name">{eachWine.name}</span>
-                    <p className="wine-year">{eachWine.year}</p>
+                    <p className="bodega-wine-year">{eachWine.year}</p>
                     <p className="bodega-wine-details-tipo">{eachWine.tipo}</p>
                     <p>{rating}</p>
                     <br />
