@@ -17,6 +17,7 @@ import BodegaDetails from './pages/bodegas/BodegaDetails';
 import IsPrivate from './components/IsPrivate';
 import IsAdmin from './components/IsAdmin';
 import WinesEdit from './pages/WinesEdit';
+import BodegasEdit from './pages/bodegas/BodegasEdit';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         {/* Bodegas */}
         <Route path={"/bodegas"} end={true} element={ <Bodegas /> } />
         <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
+        <Route path={"/bodegas/:id/edit"} element={ <IsPrivate> <IsAdmin> <BodegasEdit /> </IsAdmin> </IsPrivate> } />
         <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate>   } />
         {/* Error */}
         <Route path={"/error"} element={ <Error /> } />

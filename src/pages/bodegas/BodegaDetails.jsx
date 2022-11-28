@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getBodegaDetailsService } from "../../services/bodegas.services";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deleteBodegaService, getBodegaDetailsService } from "../../services/bodegas.services";
+import IsAdmin from "../../components/IsAdmin";
+import { Button } from 'react-bootstrap'
 
 function BodegaDetails() {
   const { id } = useParams();
@@ -23,6 +25,18 @@ function BodegaDetails() {
     }
   };
 
+  // Borrar Bodega
+  const handleDelete = async () => {
+    try {
+
+      await deleteBodegaService(id)
+      navigate('/bodegas')
+
+    } catch(err) {
+      navigate('/error')
+    }
+  }
+
   // Loading o spinner
   if (!bodegaDetails) {
     return <h3>...Loading</h3>;
@@ -33,18 +47,27 @@ function BodegaDetails() {
       <h3 className="title">Detalles de la bodega</h3>
       <div>
         <div>
-          <img src={bodegaDetails.image} alt="imagen de la bodega" />
+          <img src={bodegaDetails.image} alt="imagen de la bodega" width={400}/>
         </div>
         <div>
           <h4>{bodegaDetails.name}</h4>
           <p>{bodegaDetails.region}</p>
           <p>{bodegaDetails.description}</p>
+          <div>
+          <IsAdmin>
+            <Link className="edit-bodega-btn" to={`/bodegas/${id}/edit`}>
+              {" "}
+              <button variant="danger">Editar</button>{" "}
+            </Link>
+            <Button variant="danger" onClick={handleDelete}>Borrar</Button>
+          </IsAdmin>
+          </div>
           <h5 className="title">
             Vinos de la bodega:
             {bodegaDetails.wines.map((eachWine) => {
               let emptyStar = "☆";
               let filledStar = "★";
-      
+
               const rating =
                 filledStar.repeat(Math.round(eachWine.puntuacion)) +
                 emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
@@ -69,6 +92,7 @@ function BodegaDetails() {
               );
             })}
           </h5>
+     
         </div>
       </div>
     </div>

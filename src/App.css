@@ -220,6 +220,12 @@ span {
   border-bottom: 1px solid crimson;
 }
 
+.edit-bodega-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flechita {
   color: crimson!important;
 }

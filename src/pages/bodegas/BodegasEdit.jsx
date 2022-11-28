@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { bodegasListService, getBodegaDetailsService, editBodegaService } from "../../services/bodegas.services";
 import uploadService from "../../services/profile.service";
-import { addNewBodegaService } from "../../services/bodegas.services";
-import { Form } from "react-bootstrap";
+import { Form } from 'react-bootstrap'
 import { winesListService } from "../../services/wines.services";
 
-function BodegasCreate() {
-  const navigate = useNavigate();
+function BodegasEdit() {
 
-  // 1. estados
+  const navigate = useNavigate();
+  const { id } = useParams()
+
+  //1. Estados
   const [name, setName] = useState("");
   const [region, setRegion] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [wines, setWines] = useState([]);
+  const [ wines, setWines ] = useState([])
 
-  // Estado para mostrar todos los vinos en el Select del form
   const [allWines, setAllWines] = useState([]);
 
-  // 2. handlers
+  // 2. Eventos, Handles
   const handleNameChange = (e) => setName(e.target.value);
   const handleRegionChange = (e) => setRegion(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
@@ -42,9 +43,8 @@ function BodegasCreate() {
     setWines(value);
   };
 
-  // 3. Submit
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const newBodega = {
@@ -55,38 +55,60 @@ function BodegasCreate() {
         image
       };
 
-      await addNewBodegaService(newBodega);
-      navigate("/bodegas");
-    } catch (err) {
-      navigate("/error");
+      await editBodegaService(id, newBodega);
+      navigate(`/bodegas/${id}`)
+
+    } catch(err) {
+      navigate('/error')
     }
-  };
+  }
+
+  // ComponentDidMount
+  useEffect(() => {
+    getAllBodegas()
+  }, [])
+
+  const getAllBodegas = async () => {
+
+    try {
+      const response = await getBodegaDetailsService(id);
+      const { name, region, description, image, wines } = response.data;
+
+      console.log(response.data)
+      setName(name)
+      setRegion(region)
+      setDescription(description)
+      setImage(image)
+      setWines(wines)
+
+    } catch(err) {
+      navigate('/error')
+    }
+  }
 
   useEffect(() => {
-    getAllWines();
-  }, []);
+    getAllWines()
+  }, [])
 
   const getAllWines = async () => {
     try {
       const response = await winesListService();
-      // console.log(response.data)
-      setAllWines(response.data);
-      // setWines(response.data)
-    } catch (err) {
-      navigate("/error");
+      
+      setAllWines(response.data)
+
+    }catch(err) {
+      navigate('/error')
     }
-  };
+  }
 
   if (!allWines) {
     return <h3>...loading</h3>;
   }
 
-  console.log(allWines);
-
   return (
     <div className="form-center container-fluid">
       <div className="row col-6 map_section">
-        <h4>Añade una bodega</h4>
+        <h4>Editar bodega</h4>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Control
@@ -118,10 +140,11 @@ function BodegasCreate() {
           <Form.Label>
             Selecciona el vino o los vinos de la bodega
           </Form.Label>
-          <Form.Select name="wines" onChange={handleWinesChange} multiple>
+          <Form.Select name="wines" onChange={handleWinesChange} multiple >
             {allWines.map((eachwine) => {
               return (
-                  <option value={eachwine._id}>{eachwine.name}</option>
+      
+                  <option key={eachwine._id} value={eachwine._id}>{eachwine.name}</option>
               );
             })}
           </Form.Select>
@@ -137,12 +160,14 @@ function BodegasCreate() {
             </Form.Control>
           </Form.Group>
           <br />
-          <button> Agregar Bodega </button>
+          <button> Actualizar bodega </button>
           <br />
         </Form>
       </div>
     </div>
-  );
+  
+  
+    )
 }
 
-export default BodegasCreate;
+export default BodegasEdit;

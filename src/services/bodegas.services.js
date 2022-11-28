@@ -12,4 +12,12 @@ const getBodegaDetailsService = (id) => {
   return service.get(`/bodegas/${id}`)
 }
 
-export { bodegasListService, addNewBodegaService, getBodegaDetailsService }
+const editBodegaService = (id, theBodega) => {
+  return service.patch(`/bodegas/${id}`, theBodega)
+}
+
+const deleteBodegaService = (id) => {
+  return service.delete(`/bodegas/${id}`)
+}
+
+export { bodegasListService, addNewBodegaService, getBodegaDetailsService, editBodegaService, deleteBodegaService }

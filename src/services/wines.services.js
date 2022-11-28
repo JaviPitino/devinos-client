@@ -16,4 +16,8 @@ const editWineService = (id, theWine) => {
   return service.patch(`/wines/${id}`, theWine)
 }
 
-export { winesListService, getWineDetailsService, addNewWineService, editWineService }
+const deleteWineService = ( id ) => {
+  return service.delete(`/wines/${id}`)
+}
+
+export { winesListService, getWineDetailsService, addNewWineService, editWineService, deleteWineService }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { getWineDetailsService } from "../services/wines.services";
+import { deleteWineService, getWineDetailsService } from "../services/wines.services";
 import IsAdmin from '../components/IsAdmin'
 
 function WinesDetails(props) {
@@ -24,6 +24,17 @@ function WinesDetails(props) {
       navigate("/error");
     }
   };
+
+  // Borrar wino
+  const handleDelete = async () => {
+    try {
+      await deleteWineService(id)
+      navigate('/wines')
+
+    } catch(err) {
+      navigate('/error')
+    }
+  }
 
   // 4. El loading o Spinner
   if (wineDetail === null) {
@@ -58,7 +69,8 @@ function WinesDetails(props) {
           <br />
           <br />
           <IsAdmin>
-            <Link to={`/wines/${id}/edit`}> <button>Editar</button> </Link>  
+            <Link to={`/wines/${id}/edit`}> <button>Editar</button> </Link> 
+            <button variant="danger" onClick={handleDelete}>Borrar</button>
           </IsAdmin>
         </div>
       </div>

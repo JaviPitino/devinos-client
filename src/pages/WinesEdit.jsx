@@ -24,7 +24,7 @@ function WinesEdit() {
   });
 
   const [image, setImage] = useState("");
-  // const [bodega, setBodega] = useState({})
+  // const [bodega, setBodega] = useState("")
   const [allBodegas, setAllBodegas] = useState([]);
 
   const uva = [
@@ -57,55 +57,6 @@ function WinesEdit() {
     }
   };
 
-  // ComponentDidMount
-  useEffect(() => {
-    getWineDetails();
-  }, []);
-
-  const getWineDetails = async () => {
-    try {
-      const response = await getWineDetailsService(id);
-      const { name, bodega, tipo, uva, year, description, puntuacion, image } =
-        response.data;
-
-      setForm({
-        name,
-        bodega,
-        tipo,
-        uva,
-        year,
-        description,
-        puntuacion
-      });
-      setImage(image)
-
-      // console.log({bodega: bodega[0].name})
-      // setBodega({bodega: bodega[0].name})
-      // console.log(bodega)
-
-    } catch (err) {
-      navigate("/error");
-    }
-  };
-
-  // console.log((form.bodega))
-  console.log(image)
-
-
-  // Llamar al axios de las bodegas
-  useEffect(() => {
-    getAllBodegas();
-  }, []);
-
-  const getAllBodegas = async () => {
-    try {
-      const response = await bodegasListService();
-      setAllBodegas(response.data);
-    } catch (err) {
-      navigate("/error");
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -129,6 +80,65 @@ function WinesEdit() {
     }
   };
 
+  // ComponentDidMount
+  useEffect(() => {
+    getWineDetails();
+  }, []);
+
+  const getWineDetails = async () => {
+    try {
+      const response = await getWineDetailsService(id);
+      const { name, bodega, tipo, uva, year, description, puntuacion, image } =
+        response.data;
+
+      setForm({
+        name,
+        bodega,
+        tipo,
+        uva,
+        year,
+        description,
+        puntuacion
+      });
+      setImage(image)
+      // setBodega(bodega)
+
+      
+      // let newBodega = bodega.map((each) => {
+      //   return (each.name)
+      // })
+      
+      //setBodega(bodega)
+      // console.log(bodega)
+      // console.log(newBodega)
+
+      // console.log({bodega: bodega[0].name})
+      // setBodega({bodega: bodega[0].name})
+      
+
+    } catch (err) {
+      navigate("/error");
+    }
+  };
+
+  // console.log((form.bodega))
+  console.log(image)
+
+
+  // Llamar al axios de las bodegas
+  useEffect(() => {
+    getAllBodegas();
+  }, []);
+
+  const getAllBodegas = async () => {
+    try {
+      const response = await bodegasListService();
+      setAllBodegas(response.data);
+
+    } catch (err) {
+      navigate("/error");
+    }
+  };
 
   return (
     <div className="form-center container-fluid">
