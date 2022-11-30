@@ -15,7 +15,7 @@ function BodegasEdit() {
   const [region, setRegion] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [ wines, setWines ] = useState([])
+  const [wines, setWines] = useState([])
 
   const [allWines, setAllWines] = useState([]);
 

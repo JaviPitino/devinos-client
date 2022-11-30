@@ -73,8 +73,8 @@ function WinesDetails(props) {
   const getAllComments = async () => {
     try {
 
-      const response = await getAllCommentsService();
-      console.log(response.data);
+      const showComments = await getAllCommentsService();
+      console.log(showComments.data);
       // setAllComments(response.data)
 
     } catch(erro) {
@@ -82,7 +82,7 @@ function WinesDetails(props) {
     }
   }
 
-  console.log(comment)
+  console.log(wineDetail)
 
   // 4. El loading o Spinner
   if (wineDetail === null) {
@@ -102,9 +102,9 @@ function WinesDetails(props) {
               width={120}
             />
           </div>
-          <div className="info-wine" key={wineDetail._id}>
+          <div className="info-wine">
             <h4 className="wine-title-det">{wineDetail.name}</h4>
-            <p> {wineDetail.tipo}</p>
+            <p className="wine-type"> {wineDetail.tipo}</p>
             <h6 className="wine-year">{wineDetail.year}</h6>
             {/* <h5 className="wine-rating">{rating}</h5> */}
 
@@ -136,7 +136,6 @@ function WinesDetails(props) {
                   value={comment}
                   onChange={handleChangeComment}
                   cols="60" rows="3" as="textarea" />
-                  
                   <br />
                   <button className="btn-edit-wine">Enviar</button>
                 </Form>
@@ -148,30 +147,25 @@ function WinesDetails(props) {
         </div>
         <div className="card-bodega">
           <h5 className="title-bodega-wine-detail">La bodega</h5>
-          {wineDetail.bodega.map((eachBodega) => {
-            return (
-              <div key={eachBodega._id} className="bodega-container-details">
-                <div className="img-bodega-wine-details">
-                  <img
-                    src={eachBodega.image}
-                    alt="imagen de la bodega"
-                    width={150}
-                  />
-                </div>
-                <div>
-                  <span className="bodega-wine-name">{eachBodega.name}</span>
-                  <p>{eachBodega.region}</p>
+          <div className="bodega-container-details">
+            <div className="img-bodega-wine-details">
+              <img
+                src={wineDetail.bodega.image}
+                alt="imagen de la bodega"
+                width={150}
+                />
+            </div>
+            <div>
+            <span className="bodega-wine-name">{wineDetail.bodega.name}</span>
+                  <p>{wineDetail.bodega.region}</p>
                   <p className="bodega-wine-description">
-                    {eachBodega.description}
+                    {wineDetail.bodega.description}
                   </p>
-                </div>
-
-                <Link to={`/bodegas/${eachBodega._id}`} className="leer-mas">
-                  Leer más
-                </Link>
-              </div>
-            );
-          })}
+            </div>
+            <Link to={`/bodegas/${wineDetail.bodega._id}`} className="leer-mas">
+               Leer más
+            </Link>
+          </div>
         </div>
       </div>
     </div>

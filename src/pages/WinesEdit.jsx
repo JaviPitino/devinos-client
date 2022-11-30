@@ -15,7 +15,6 @@ function WinesEdit() {
   //1. Estados
   const [form, setForm] = useState({
     name: "",
-    // bodega: "",
     tipo: "",
     uva: [],
     year: 2020,
@@ -95,7 +94,6 @@ function WinesEdit() {
 
       setForm({
         name,
-        // bodega,
         tipo,
         uva,
         year,
@@ -109,8 +107,7 @@ function WinesEdit() {
       })
       
       setBodega(newBodega)
-      console.log(newBodega)
-      // console.log(bodega)
+      // console.log(newBodega)
 
     } catch (err) {
       navigate("/error");
@@ -154,14 +151,12 @@ function WinesEdit() {
           </Form.Group>
           <br />
           <Form.Select
-            
             name="bodega"
             htmlFor="bodega"
             onChange={handleBodegaChange}
             value={bodega.toString()}
-            defaultValue={bodega.toString()}
           >
-            <option value={bodega.toString()}>{bodega.toString()}</option>
+            <option>{bodega.toString()}</option>
             {allBodegas.map((eachBodega) => {
               return(
                 <option value={eachBodega._id}>{eachBodega.name}</option>

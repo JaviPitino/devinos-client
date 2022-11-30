@@ -50,9 +50,10 @@ a {
 .title {
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  font-size: 2em;
+  font-size: 1.6em;
+  margin-bottom: .9em
 }
-
+ 
 .wine-container {
   margin-left: 10%;
   margin-right: 10%;
@@ -113,7 +114,7 @@ a {
 }
 
 .wine-rating {
-  margin-top: 15px!important;
+  margin-top: 0;
   font-size: 1.2em;
 }
 
@@ -121,8 +122,13 @@ span {
   text-align: left!important;
 }
 
+p {
+  margin-bottom: 0.2em!important;
+}
+
 .wine-year {
   font-size: 1em;
+  margin-bottom: 0;
 }
 
 .wine-description {
@@ -133,7 +139,24 @@ span {
 }
 
 .btn-filtrar {
-  margin-right: 1.5em!important;
+    justify-content: center;
+    width: 100px;
+    padding: 5px 2px;
+    border: 0.5px solid rgb(255, 170, 13);
+    color: rgb(255, 170, 13)!important;
+    font-size: .7em;
+    margin-right: 3em;
+    background-color: rgb(250, 250, 250)!important;
+}
+
+.btn-filtrar:hover {
+  border: .5px solid crimson;
+  color: crimson!important;
+}
+
+.btn-filtrar:focus {
+  background-color: rgb(255, 170, 13)!important;
+  color: white!important;
 }
 
 .btn-edit-wine {
@@ -150,7 +173,11 @@ span {
 .btn-edit-wine:hover {
   border: .5px solid crimson;
   color: crimson!important;
+}
 
+.btn-edit-wine:focus {
+  background-color: crimson!important;
+  color: white!important;
 }
 
 .container-btns-edit {

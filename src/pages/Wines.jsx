@@ -52,6 +52,7 @@ function Wines() {
       (eachWine) => eachWine.tipo === "Rosado"
     );
     setAllWinesToDisplay(filterArrTinto);
+    // setWines(wines)
     // setNewSearch("")
   };
 
@@ -62,6 +63,7 @@ function Wines() {
       (eachWine) => eachWine.tipo === "Blanco"
     );
     setAllWinesToDisplay(filterArrTinto);
+    // setWines(wines)
     // setNewSearch("")
   };
 
@@ -69,6 +71,7 @@ function Wines() {
   const handleAllWines = () => {
     const winesCopyList = [...wines];
     setAllWinesToDisplay(winesCopyList);
+    // setWines(wines)
     // setNewSearch("")
   };
 
@@ -93,7 +96,8 @@ function Wines() {
       return eachWine.name.toUpperCase().includes(search.toUpperCase());
     });
     setAllWinesToDisplay(filterArr);
-    // setNewSearch(search = "")
+    // setWines(wines)
+    // setNewSearch("")
   };
 
   if (!wines) {
@@ -104,33 +108,25 @@ function Wines() {
     <div>
       <Search searchList={searchList} /*funcion={liftStateUp}*/ />
       <h3 className="title">Vinos disponibles</h3>
-      <Button className="btn-filtrar" onClick={handleAllWines} variant="danger">
+      <button
+        className="btn-edit-wine"
+        onClick={handleAllWines}
+        variant="danger"
+      >
         Todos
-      </Button>
-      <Button
-        className="btn-filtrar"
-        onClick={HandleFilterTintos}
-        variant="outline-danger"
-      >
+      </button>
+      <button className="btn-edit-wine" onClick={HandleFilterTintos}>
         Tintos
-      </Button>
-      <Button
-        className="btn-filtrar"
-        onClick={HandleFilterRosados}
-        variant="outline-danger"
-      >
+      </button>
+      <button className="btn-edit-wine" onClick={HandleFilterRosados}>
         Rosados
-      </Button>
-      <Button
-        className="btn-filtrar"
-        onClick={HandleFilterBlancos}
-        variant="outline-danger"
-      >
+      </button>
+      <button className="btn-edit-wine" onClick={HandleFilterBlancos}>
         Blancos
-      </Button>
-      <Button className="btn-filtrar" onClick={handleSort}>
+      </button>
+      <button className="btn-filtrar" onClick={handleSort}>
         Ordenar
-      </Button>
+      </button>
       <br />
       <br />
 
@@ -151,20 +147,13 @@ function Wines() {
               <Link to={`/wines/${eachWine._id}`}>
                 <h4 className="wine-title">{eachWine.name}</h4>
               </Link>
-              {eachWine.bodega.map((each) => {
-                return (
-                  <div className="bodega-name-wines" value={each._id}>
-                    <Link to={`/bodegas/${each._id}`}>
-                      Bodega: {each.name}{" "}
-                      <span className="flechita">
-                        {" "}
-                        &nbsp;  --
-                      </span>{" "}
-                    </Link>
-                  </div>
-                );
-              })}
-
+              <Link
+                to={`/bodegas/${eachWine.bodega._id}`}
+                className="bodega-name-wines"
+              >
+                Bodega: {eachWine.bodega.name}{" "}
+                <span className="flechita"> &nbsp; //</span>{" "}
+              </Link>
               <p> {eachWine.tipo}</p>
               <h6 className="wine-year">{eachWine.year}</h6>
               <h5 className="wine-rating">{rating}</h5>
