@@ -25,7 +25,7 @@ function Wines() {
       const response = await winesListService();
       setWines(response.data);
       setAllWinesToDisplay(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (err) {
       if (err.response.status === 401) {
         navigate("/login");
@@ -34,11 +34,6 @@ function Wines() {
       }
     }
   };
-
-  // lift the State Up
-  // const liftStateUp = (funcion) => {
-  //   setNewSearch(funcion)
-  // }
 
   // Filtrar tintos
   const HandleFilterTintos = () => {
@@ -49,7 +44,6 @@ function Wines() {
     setAllWinesToDisplay(filterArrTinto);
     // setNewSearch("")
   };
-  // console.log(newSearch)
 
   // Filtrar rosados
   const HandleFilterRosados = () => {

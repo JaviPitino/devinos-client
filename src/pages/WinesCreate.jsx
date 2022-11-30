@@ -47,7 +47,7 @@ function WinesCreate() {
 
     try {
       const response = await uploadService(uploadImage);
-      console.log(response.data);
+      // console.log(response.data);
       setImage(response.data);
     } catch (err) {
       navigate("/error");

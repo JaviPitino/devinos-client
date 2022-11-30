@@ -136,6 +136,29 @@ span {
   margin-right: 1.5em!important;
 }
 
+.btn-edit-wine {
+  justify-content: center;
+  width: 100px;
+  padding: 5px 2px;
+  border: 0.5px solid rgb(177, 176, 176);
+  color: rgb(177, 176, 176)!important;
+  font-size: .7em;
+  margin-right: 3em;
+  background-color: rgb(250, 250, 250)!important;
+}
+
+.btn-edit-wine:hover {
+  border: .5px solid crimson;
+  color: crimson!important;
+
+}
+
+.container-btns-edit {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 /* **** BODEGAS **** */
 .form-center {
   display:flex!important;

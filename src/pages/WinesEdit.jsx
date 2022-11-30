@@ -15,7 +15,7 @@ function WinesEdit() {
   //1. Estados
   const [form, setForm] = useState({
     name: "",
-    bodega: "",
+    // bodega: "",
     tipo: "",
     uva: [],
     year: 2020,
@@ -24,7 +24,7 @@ function WinesEdit() {
   });
 
   const [image, setImage] = useState("");
-  // const [bodega, setBodega] = useState("")
+  const [bodega, setBodega] = useState("")
   const [allBodegas, setAllBodegas] = useState([]);
 
   const uva = [
@@ -43,6 +43,8 @@ function WinesEdit() {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
+
+  const handleBodegaChange = (e) => setBodega(e.target.value)
 
   const handleChangeImage = async (e) => {
     const uploadImage = new FormData();
@@ -63,7 +65,7 @@ function WinesEdit() {
     try {
       const theWine = {
         name: form.name,
-        bodega: form.bodega,
+        bodega,
         tipo: form.tipo,
         uva: form.uva,
         year: form.year,
@@ -93,7 +95,7 @@ function WinesEdit() {
 
       setForm({
         name,
-        bodega,
+        // bodega,
         tipo,
         uva,
         year,
@@ -101,20 +103,14 @@ function WinesEdit() {
         puntuacion
       });
       setImage(image)
-      // setBodega(bodega)
 
+      let newBodega = bodega.map((each) => {
+        return (each.name)
+      })
       
-      // let newBodega = bodega.map((each) => {
-      //   return (each.name)
-      // })
-      
-      //setBodega(bodega)
+      setBodega(newBodega)
+      console.log(newBodega)
       // console.log(bodega)
-      // console.log(newBodega)
-
-      // console.log({bodega: bodega[0].name})
-      // setBodega({bodega: bodega[0].name})
-      
 
     } catch (err) {
       navigate("/error");
@@ -140,6 +136,8 @@ function WinesEdit() {
     }
   };
 
+ console.log(bodega.toString())
+
   return (
     <div className="form-center container-fluid">
       <div className="row col-6 map_section">
@@ -156,13 +154,18 @@ function WinesEdit() {
           </Form.Group>
           <br />
           <Form.Select
+            
             name="bodega"
             htmlFor="bodega"
-            onChange={handleChange}
-            value={form.bodega}
+            onChange={handleBodegaChange}
+            value={bodega.toString()}
+            defaultValue={bodega.toString()}
           >
+            <option value={bodega.toString()}>{bodega.toString()}</option>
             {allBodegas.map((eachBodega) => {
-              return <option value={eachBodega._id}>{eachBodega.name}</option>;
+              return(
+                <option value={eachBodega._id}>{eachBodega.name}</option>
+              ) 
             })}
           </Form.Select>
           <br />

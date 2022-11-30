@@ -11,12 +11,6 @@ function Search(props) {
     props.searchList(e.target.value)
   }
 
-  // const { funcion } = props
-
-  // funcion(search)
-
-
-
   return (
     <div className="form-center container-fluid">
           <div className="row col-6 map_section">
