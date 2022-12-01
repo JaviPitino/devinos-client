@@ -20,6 +20,7 @@ function BodegaDetails() {
     try {
       const response = await getBodegaDetailsService(id);
       setBodegaDetails(response.data);
+      console.log(response.data);
     } catch (err) {
       navigate("/error");
     }
@@ -47,7 +48,7 @@ function BodegaDetails() {
       <h3 className="title">Detalles de la bodega</h3>
       <div>
         <div>
-          <img src={bodegaDetails.image} alt="imagen de la bodega" width={400}/>
+          <img src={bodegaDetails.image} alt="winerie image" width={400}/>
         </div>
         <div>
           <h4>{bodegaDetails.name}</h4>

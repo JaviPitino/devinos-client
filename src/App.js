@@ -35,12 +35,12 @@ function App() {
         {/* Vinos */}
         <Route path={"/wines"} end={true} element={ <Wines persona="Juanito" /> } />
         <Route path={"/wines/:id"} element={ <WinesDetails /> } />
-        <Route path={"/wines/:id/edit"} element={ <IsPrivate> <IsAdmin> <WinesEdit /> </IsAdmin> </IsPrivate> } />
+        <Route path={"/wines/:id/edit"} element={ <WinesEdit /> } />
         <Route path={"/wines/create"} element={ <IsPrivate> <IsAdmin> <WinesCreate /> </IsAdmin> </IsPrivate> } />
         {/* Bodegas */}
         <Route path={"/bodegas"} end={true} element={ <Bodegas /> } />
         <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
-        <Route path={"/bodegas/:id/edit"} element={ <IsPrivate> <IsAdmin> <BodegasEdit /> </IsAdmin> </IsPrivate> } />
+        <Route path={"/bodegas/:id/edit"} element={  <BodegasEdit />  } />
         <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate>   } />
         {/* Error */}
         <Route path={"/error"} element={ <Error /> } />

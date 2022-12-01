@@ -12,8 +12,8 @@ const getBodegaDetailsService = (id) => {
   return service.get(`/bodegas/${id}`)
 }
 
-const editBodegaService = (id, theBodega) => {
-  return service.patch(`/bodegas/${id}`, theBodega)
+const editBodegaService = (id, newBodega) => {
+  return service.patch(`/bodegas/${id}`, newBodega)
 }
 
 const deleteBodegaService = (id) => {

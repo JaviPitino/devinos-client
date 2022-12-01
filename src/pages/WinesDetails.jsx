@@ -49,38 +49,38 @@ function WinesDetails(props) {
   };
 
   // Handle comentario
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
 
-    try {
-      const newComment = {
-        comment
-      }
+  //   try {
+  //     const newComment = {
+  //       comment
+  //     }
 
-      const response = await addNewCommentService(id, newComment);
-      console.log(response.data)
-      navigate(`/wines/${id}`)
+  //     const response = await addNewCommentService(id, newComment);
+  //     console.log(response.data)
+  //     navigate(`/wines/${id}`)
 
-    } catch(err) {
-      navigate('/error')
-    }
-  }
+  //   } catch(err) {
+  //     navigate('/error')
+  //   }
+  // }
 
-  useEffect(() => {
-    getAllComments()
-  })
+  // useEffect(() => {
+  //   getAllComments()
+  // })
 
-  const getAllComments = async () => {
-    try {
+  // const getAllComments = async () => {
+  //   try {
 
-      const showComments = await getAllCommentsService();
-      console.log(showComments.data);
-      // setAllComments(response.data)
+  //     const showComments = await getAllCommentsService();
+  //     // console.log(showComments.data);
+  //     // setAllComments(response.data)
 
-    } catch(erro) {
-      navigate('/error')
-    }
-  }
+  //   } catch(erro) {
+  //     navigate('/error')
+  //   }
+  // }
 
   console.log(wineDetail)
 
@@ -120,13 +120,13 @@ function WinesDetails(props) {
                   {" "}
                   Editar Vino{" "}
                 </Link>
-                <div className="btn-edit-wine" onClick={handleDelete}>
+                <button className="btn-edit-wine" onClick={handleDelete}>
                   Borrar Vino
-                </div>
+                </button>
               </div>
             </IsAdmin>
             <hr />
-            {isLogin && (
+            {/* {isLogin && (
               <div>
                 <h6>Déjanos tu comentario</h6>
                 <Form onSubmit={handleSubmit}>
@@ -140,7 +140,7 @@ function WinesDetails(props) {
                   <button className="btn-edit-wine">Enviar</button>
                 </Form>
               </div>
-            )}
+            )} */}
             <br />
             <br />
           </div>

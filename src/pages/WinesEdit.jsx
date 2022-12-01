@@ -23,7 +23,7 @@ function WinesEdit() {
   });
 
   const [image, setImage] = useState("");
-  const [bodega, setBodega] = useState("")
+  const [bodegaState, setBodegaState] = useState("");
   const [allBodegas, setAllBodegas] = useState([]);
 
   const uva = [
@@ -43,7 +43,7 @@ function WinesEdit() {
     setForm({ ...form, [name]: value });
   };
 
-  const handleBodegaChange = (e) => setBodega(e.target.value)
+  const handleBodegaChange = (e) => setBodegaState(e.target.value);
 
   const handleChangeImage = async (e) => {
     const uploadImage = new FormData();
@@ -52,7 +52,6 @@ function WinesEdit() {
     try {
       const response = await uploadService(uploadImage);
       setImage(response.data);
-
     } catch (err) {
       navigate("/error");
     }
@@ -64,7 +63,7 @@ function WinesEdit() {
     try {
       const theWine = {
         name: form.name,
-        bodega,
+        bodega: bodegaState,
         tipo: form.tipo,
         uva: form.uva,
         year: form.year,
@@ -75,9 +74,9 @@ function WinesEdit() {
 
       await editWineService(id, theWine);
       navigate(`/wines/${id}`);
-
     } catch (err) {
       navigate("/error");
+      
     }
   };
 
@@ -98,25 +97,24 @@ function WinesEdit() {
         uva,
         year,
         description,
-        puntuacion
+        puntuacion,
       });
-      setImage(image)
+      setImage(image);
 
-      let newBodega = bodega.map((each) => {
-        return (each.name)
-      })
-      
-      setBodega(newBodega)
-      // console.log(newBodega)
+      // let newBodega = bodega.map((each) => {
+      //   return each.name;
+      // });
 
+      setBodegaState(bodega.name);
+      console.log(bodegaState)
     } catch (err) {
       navigate("/error");
+      // console.log("aqui es el error")
     }
   };
 
   // console.log((form.bodega))
-  console.log(image)
-
+  console.log(image);
 
   // Llamar al axios de las bodegas
   useEffect(() => {
@@ -127,13 +125,12 @@ function WinesEdit() {
     try {
       const response = await bodegasListService();
       setAllBodegas(response.data);
-
     } catch (err) {
       navigate("/error");
     }
   };
 
- console.log(bodega.toString())
+  console.log(bodegaState);
 
   return (
     <div className="form-center container-fluid">
@@ -154,18 +151,24 @@ function WinesEdit() {
             name="bodega"
             htmlFor="bodega"
             onChange={handleBodegaChange}
-            value={bodega.toString()}
+            required={true}
+           // value={bodegaState}
           >
-            <option>{bodega.toString()}</option>
+            <option>slecciona una bodega</option>
+            
+            {/* <option>{bodegaState}</option> */}
             {allBodegas.map((eachBodega) => {
-              return(
-                <option value={eachBodega._id}>{eachBodega.name}</option>
-              ) 
+               
+              return (
+                <option key={eachBodega._id} value={eachBodega._id}>
+                {eachBodega.name}
+                </option>
+              );
             })}
           </Form.Select>
           <br />
           <Form.Select
-            name="tipò"
+            name="tipo"
             htmlFor="tipo"
             onChange={handleChange}
             value={form.tipo}
@@ -179,16 +182,16 @@ function WinesEdit() {
             name="uva"
             htmlFor="uva"
             onChange={handleChange}
-            value={form.uva}
+            
             multiple
           >
             {uva.map((eachUva) => {
-              return <option>{eachUva}</option>;
+              return <option value={form.uva} required>{eachUva}</option>;
             })}
           </Form.Select>
           <br />
           <Form.Group>
-            <Form.Control 
+            <Form.Control
               type="number"
               name="year"
               onChange={handleChange}
@@ -196,7 +199,7 @@ function WinesEdit() {
             />
           </Form.Group>
           <br />
-          <Form.Control 
+          <Form.Control
             type="text"
             name="description"
             onChange={handleChange}
@@ -206,7 +209,7 @@ function WinesEdit() {
             as="textarea"
           />
           <br />
-           <Form.Select
+          <Form.Select
             htmlFor="puntuacion"
             type="number"
             name="puntuacion"
@@ -227,7 +230,7 @@ function WinesEdit() {
               onChange={handleChangeImage}
               // value={image}
             />
-            <img src={image} alt="wine image" width={50}/>
+            <img src={image} alt="wine image" width={50} />
           </Form.Group>
           <br />
           <button variant="danger">Actualizar</button>

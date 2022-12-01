@@ -79,7 +79,15 @@ function BodegasEdit() {
       setRegion(region)
       setDescription(description)
       setImage(image)
-      setWines(wines)
+
+      let filterArr = wines.map((each) =>{
+
+        if ( allWines )
+
+        return each.name
+      })
+      setWines(filterArr)
+      // setWines(wines)
 
     } catch(err) {
       navigate('/error')
@@ -94,12 +102,21 @@ function BodegasEdit() {
     try {
       const response = await winesListService();
       
+    
       setAllWines(response.data)
+
 
     }catch(err) {
       navigate('/error')
     }
   }
+
+  // let union = [new Set([...wines, ...allWines])]
+  // console.log(union);
+
+
+  console.log(wines)
+  console.log(allWines)
 
   if (!allWines) {
     return <h3>...loading</h3>;
@@ -140,13 +157,18 @@ function BodegasEdit() {
           <Form.Label>
             Selecciona el vino o los vinos de la bodega
           </Form.Label>
-          <Form.Select name="wines" onChange={handleWinesChange} multiple >
-            {allWines.map((eachwine) => {
-              return (
-      
-                  <option key={eachwine._id} value={eachwine._id}>{eachwine.name}</option>
-              );
-            })}
+          <Form.Select name="wines" onChange={handleWinesChange} multiple value={wines} required={true} >
+           
+            
+
+              {allWines.map((eachwine) => {
+                return (
+
+                    <option key={eachwine._id} value={eachwine._id}>{eachwine.name}</option>
+                );
+              })}
+            
+            
           </Form.Select>
           <br />
           <Form.Group>
@@ -155,9 +177,10 @@ function BodegasEdit() {
               type="file"
               name="image"
               width={200}
-            >
-              {/* Selecciona una imagen */}
-            </Form.Control>
+            />
+            {
+              image ? <img src={image} alt="winerie image" width={100}/> : <></>
+            }
           </Form.Group>
           <br />
           <button> Actualizar bodega </button>
