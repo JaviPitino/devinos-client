@@ -1,0 +1,41 @@
+.comment-box {
+  text-align: left;
+  max-height: 200px;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.comment-title {
+  margin-top: 20px;
+}
+
+.container-comments {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 5px
+}
+
+.img-comment {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin: 5px
+}
+
+.username-comment {
+  margin: 0;
+}
+
+.createdAt {
+  font-size: .7em;
+  margin: 0!important;
+}
+
+.comment {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}

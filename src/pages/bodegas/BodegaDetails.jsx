@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteBodegaService, getBodegaDetailsService } from "../../services/bodegas.services";
 import IsAdmin from "../../components/IsAdmin";
 import { Button } from 'react-bootstrap'
+import { AuthContext } from "../../context/auth.context";
 
 function BodegaDetails() {
+
+  const { isLogin } = useContext(AuthContext)
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -55,13 +58,15 @@ function BodegaDetails() {
           <p>{bodegaDetails.region}</p>
           <p>{bodegaDetails.description}</p>
           <div>
-          <IsAdmin>
-            <Link className="edit-bodega-btn" to={`/bodegas/${id}/edit`}>
-              {" "}
-              <button variant="danger">Editar</button>{" "}
-            </Link>
-            <Button variant="danger" onClick={handleDelete}>Borrar</Button>
-          </IsAdmin>
+            { isLogin && 
+              <IsAdmin>
+                <Link className="edit-bodega-btn" to={`/bodegas/${id}/edit`}>
+                  {" "}
+                  <button variant="danger">Editar</button>{" "}
+                </Link>
+                <Button variant="danger" onClick={handleDelete}>Borrar</Button>
+              </IsAdmin>
+            }
           </div>
           <h5 className="title">
             Vinos de la bodega:

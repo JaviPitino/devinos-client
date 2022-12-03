@@ -12,8 +12,12 @@
 /* **** NAVBAR **** */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start!important;
   align-items: center;
+  background-color: #ffffff;
+  border-bottom: .5px solid rgb(223, 223, 223);
+  box-shadow: 3px 3px 8px 1px rgb(223, 223, 223);
+  margin-bottom: 25px;
 }
 
 .navbar-btn {
@@ -38,6 +42,21 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 1em;
+}
+
+.btn-logout-container {
+  display: block;
+  right: 0;
+}
+
+.btn-logout {
+  /* justify-content: flex-end!important; */
+  width: 100px;
+  padding: 5px 2px;
+  color: rgb(241, 241, 241)!important;
+  font-size: .7em;
+  margin-right: 3em;
+  background-color: #5e2129!important;
 }
 
 /* **** WINES **** */
@@ -242,7 +261,7 @@ p {
 }
 
 .card-bodega {
-  background-color: rgb(255, 233, 233);
+  background-color: rgb(224, 224, 224);
   padding: 2.5em;
   border-radius: 10px;
 }
@@ -278,25 +297,4 @@ p {
 
 .flechita {
   color: crimson!important;
-}
-
-/* **** COMMENTS *****/
-.comment-box {
-  text-align: left;
-  max-height: 200px;
-  width: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
-  /* overflow: hidden; */
-}
-
-.container-comments {
-  display: flex;
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.createdAt {
-  font-size: .7em;
-  margin: 0!important;
 }

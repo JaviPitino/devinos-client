@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import {
   deleteWineService,
   getWineDetailsService,
 } from "../services/wines.services";
-import { Form } from "react-bootstrap";
 import IsAdmin from "../components/IsAdmin";
 
-import CommentSection from "../components/CommentSection";
+import CommentSection from "../components/Comments/CommentSection";
+import { AuthContext } from "../context/auth.context";
 
 
 function WinesDetails(props) {
 
+  const { isLogin } = useContext(AuthContext)
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -52,7 +53,7 @@ function WinesDetails(props) {
 
   return (
     <div>
-      <h3 className="title">Detalles</h3>
+      {/* <h3 className="title">Detalles</h3> */}
       <div className="container-grande">
         <div className="wine-container-det">
           <div>
@@ -75,20 +76,24 @@ function WinesDetails(props) {
               })}
             </p>
             <p className="wine-description">{wineDetail.description}</p>
-            <IsAdmin>
-              <div className="container-btns-edit">
-                <Link className="btn-edit-wine" to={`/wines/${id}/edit`}>
-                  {" "}
-                  Editar Vino{" "}
-                </Link>
-                <button className="btn-edit-wine" onClick={handleDelete}>
-                  Borrar Vino
-                </button>
-              </div>
-            </IsAdmin>
             <hr />
-            <CommentSection />
-           
+            { isLogin &&
+            <>
+              <IsAdmin>
+                <div className="container-btns-edit">
+                  <Link className="btn-edit-wine" to={`/wines/${id}/edit`}>
+                    {" "}
+                    Editar Vino{" "}
+                  </Link>
+                  <button className="btn-edit-wine" onClick={handleDelete}>
+                    Borrar Vino
+                  </button>
+                </div>
+              </IsAdmin>
+              <CommentSection />
+            </>
+            }
+            
             <br />
             <br />
           </div>

@@ -18,6 +18,7 @@ function Navbar() {
   return (
     <div>
       {isLogin === true ? (
+    
         <nav className="navbar">
           <NavLink className='navbar-btn' to="/">Home</NavLink>
           <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
@@ -27,9 +28,12 @@ function Navbar() {
             <NavLink className='navbar-btn' to="/wines/create">Añade un vino</NavLink>
             <NavLink className='navbar-btn' to="/bodegas/create">Añade una bodega</NavLink>
           </IsAdmin>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-        
+          <div className="btn-logout-container">
+            <button className="btn-logout" onClick={handleLogout}>Cerrar sesión</button>
+          </div>
         </nav>
+      
+        
       ) : (
         <nav className="navbar">
           <NavLink className='navbar-btn' to="/">Home</NavLink>
