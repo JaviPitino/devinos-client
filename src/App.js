@@ -1,6 +1,6 @@
 
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import NavbarUp from './components/NavbarUp';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Bodegas from './pages/bodegas/Bodegas.jsx';
@@ -21,7 +21,7 @@ import BodegasEdit from './pages/bodegas/BodegasEdit';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <NavbarUp />
 
       <Routes>
 
@@ -35,13 +35,13 @@ function App() {
         {/* Vinos */}
         <Route path={"/wines"} end={true} element={ <Wines persona="Juanito" /> } />
         <Route path={"/wines/:id"} element={ <WinesDetails /> } />
-        <Route path={"/wines/:id/edit"} element={ <WinesEdit /> } />
+        <Route path={"/wines/:id/edit"} element={ <IsPrivate> <IsAdmin> <WinesEdit /> </IsAdmin></IsPrivate> } />
         <Route path={"/wines/create"} element={ <IsPrivate> <IsAdmin> <WinesCreate /> </IsAdmin> </IsPrivate> } />
         {/* Bodegas */}
         <Route path={"/bodegas"} end={true} element={ <Bodegas /> } />
         <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
-        <Route path={"/bodegas/:id/edit"} element={  <BodegasEdit />  } />
-        <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate>   } />
+        <Route path={"/bodegas/:id/edit"} element={ <IsPrivate> <IsAdmin> <BodegasEdit /> </IsAdmin> </IsPrivate> } />
+        <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate> } />
         {/* Error */}
         <Route path={"/error"} element={ <Error /> } />
 

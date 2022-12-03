@@ -11,13 +11,37 @@
 
 /* **** NAVBAR **** */
 .navbar {
-  display: flex;
-  justify-content: flex-start!important;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: flex-start!important; */
+  /* align-items: center; */
   background-color: #ffffff;
   border-bottom: .5px solid rgb(223, 223, 223);
   box-shadow: 3px 3px 8px 1px rgb(223, 223, 223);
   margin-bottom: 25px;
+}
+
+#collasible-nav-dropdown {
+  vertical-align: 2em!important;
+}
+
+.dropdown-toggle {
+  display: flex!important;
+  align-items: center!important;
+}
+
+.dropdown-items {
+  font-size: .9em;
+  font-family: 'roboto', sans-serif;
+  font-weight: 100!important;
+}
+
+.dropdown-toggle::after {
+  content: ""!important;
+}
+
+.dropdown {
+  margin: 0!important;
+  padding: 6px!important;
 }
 
 .navbar-btn {
@@ -27,7 +51,7 @@
 }
 
 .navbar-btn:hover {
-  font-weight: 700;
+  font-weight: 500!important;
   color: rgb(114, 55, 55)
 }
 

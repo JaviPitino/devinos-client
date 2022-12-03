@@ -106,8 +106,7 @@ function Wines() {
 
   return (
     <div>
-      <Search searchList={searchList} /*funcion={liftStateUp}*/ />
-      <h3 className="title">Vinos disponibles</h3>
+      <Search searchList={searchList} />
       <button
         className="btn-edit-wine"
         onClick={handleAllWines}
