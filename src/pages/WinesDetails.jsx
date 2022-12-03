@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import {
   deleteWineService,
@@ -6,22 +6,17 @@ import {
 } from "../services/wines.services";
 import { Form } from "react-bootstrap";
 import IsAdmin from "../components/IsAdmin";
-import { AuthContext } from "../context/auth.context";
-import { addNewCommentService, getAllCommentsService } from "../services/comment.services";
+
+import CommentSection from "../components/CommentSection";
+
 
 function WinesDetails(props) {
 
-  const { isLogin, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
 
   // 1. Estados
   const [wineDetail, setWineDetail] = useState(null);
-  const [comment, setComment ] = useState()
-  // const [ allComments, setAllComments ] = useState([])
-
-  // handlers
-  const handleChangeComment = (e) => setComment(e.target.value)
 
   // 2. ComponenDIdMount
   useEffect(() => {
@@ -47,40 +42,6 @@ function WinesDetails(props) {
       navigate("/error");
     }
   };
-
-  // Handle comentario
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-
-  //   try {
-  //     const newComment = {
-  //       comment
-  //     }
-
-  //     const response = await addNewCommentService(id, newComment);
-  //     console.log(response.data)
-  //     navigate(`/wines/${id}`)
-
-  //   } catch(err) {
-  //     navigate('/error')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getAllComments()
-  // })
-
-  // const getAllComments = async () => {
-  //   try {
-
-  //     const showComments = await getAllCommentsService();
-  //     // console.log(showComments.data);
-  //     // setAllComments(response.data)
-
-  //   } catch(erro) {
-  //     navigate('/error')
-  //   }
-  // }
 
   console.log(wineDetail)
 
@@ -126,21 +87,8 @@ function WinesDetails(props) {
               </div>
             </IsAdmin>
             <hr />
-            {/* {isLogin && (
-              <div>
-                <h6>Déjanos tu comentario</h6>
-                <Form onSubmit={handleSubmit}>
-                  <Form.Control
-                  type="text"
-                  name="comment"
-                  value={comment}
-                  onChange={handleChangeComment}
-                  cols="60" rows="3" as="textarea" />
-                  <br />
-                  <button className="btn-edit-wine">Enviar</button>
-                </Form>
-              </div>
-            )} */}
+            <CommentSection />
+           
             <br />
             <br />
           </div>

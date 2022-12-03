@@ -279,3 +279,24 @@ p {
 .flechita {
   color: crimson!important;
 }
+
+/* **** COMMENTS *****/
+.comment-box {
+  text-align: left;
+  max-height: 200px;
+  width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  /* overflow: hidden; */
+}
+
+.container-comments {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.createdAt {
+  font-size: .7em;
+  margin: 0!important;
+}

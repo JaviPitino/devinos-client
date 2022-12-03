@@ -23,7 +23,7 @@ function WinesEdit() {
   });
 
   const [image, setImage] = useState("");
-  const [bodegaState, setBodegaState] = useState("");
+  const [bodegaState, setBodegaState] = useState([]);
   const [allBodegas, setAllBodegas] = useState([]);
 
   const uva = [
@@ -147,6 +147,7 @@ function WinesEdit() {
             />
           </Form.Group>
           <br />
+          <label>Selecciona una bodega</label>
           <Form.Select
             name="bodega"
             htmlFor="bodega"
@@ -154,7 +155,7 @@ function WinesEdit() {
             required={true}
            // value={bodegaState}
           >
-            <option>slecciona una bodega</option>
+            <option></option>
             
             {/* <option>{bodegaState}</option> */}
             {allBodegas.map((eachBodega) => {
