@@ -5,8 +5,6 @@ import { AuthContext } from "../context/auth.context"
 function IsAdmin(props) {
 
   const { user } = useContext(AuthContext)
-
-  console.log(user)
   
   if ( user.role === 'admin' ) {
     return props.children

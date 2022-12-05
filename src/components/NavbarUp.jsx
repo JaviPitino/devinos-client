@@ -1,5 +1,5 @@
-import { Navigate, NavLink, useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import IsAdmin from "./IsAdmin";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
@@ -15,8 +15,6 @@ function NavbarUp() {
     authenticatedUser();
   };
   
-  console.log(user)
-  console.log(isLogin)
   return (
     <div>
       {isLogin === true ? (

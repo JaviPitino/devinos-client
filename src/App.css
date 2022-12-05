@@ -52,7 +52,7 @@
 
 .navbar-btn:hover {
   font-weight: 500!important;
-  color: rgb(114, 55, 55)
+  color: rgb(114, 55, 55)!important;
 }
 
 .container-perfil {
@@ -230,10 +230,10 @@ p {
 }
 
 /* **** BODEGAS **** */
+
 .form-center {
   display:flex!important;
   justify-content: center!important;
-  /* align-items: center!important; */
 }
 
 .bodega-wine-details-tipo {

@@ -26,7 +26,7 @@ function CommentSection() {
 
     try {
       const newComment = {
-        comment,
+        comment
       };
 
       const { data } = await addNewCommentService(id, newComment);
@@ -49,7 +49,7 @@ function CommentSection() {
   const getAllComments = async () => {
     try {
       const { data } = await getAllCommentsService(id, comment);
-      console.log('allComments', data);
+      // console.log('allComments', data);
       setAllComments(data.reverse());
 
     } catch (err) {
@@ -57,7 +57,7 @@ function CommentSection() {
     }
   };
 
-  console.log([allComments]);
+  // console.log([allComments]);
 
   return (
     <div>
@@ -84,7 +84,7 @@ function CommentSection() {
             <h6> Comentarios: </h6>
             {allComments.map((each) => {
               return (
-                <div>
+                <div key={each._id}>
                   {each.wineId._id === id ? (
                     <div className="container-comments">
                       <div>
@@ -95,7 +95,7 @@ function CommentSection() {
                         />
                       </div>
                       <div>
-                          <p className="createdAt" >{each.commentUser.createdAt = new Date().toLocaleDateString('es', { year:"numeric", month:"short", day:"numeric"}).toUpperCase()}</p>
+                          <p className="createdAt" >{each.createdAt.slice(0, 10) }</p>
                           <h6 className="username-comment" >{each.commentUser.username[0].toUpperCase() + each.commentUser.username.slice(1) }: </h6>{" "}
                         <span className="comment" >
                           {each.comment}

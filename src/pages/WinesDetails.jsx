@@ -1,38 +1,85 @@
+import { AuthContext } from "../context/auth.context";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import {
   deleteWineService,
   getWineDetailsService,
+  addLikesService
 } from "../services/wines.services";
 import IsAdmin from "../components/IsAdmin";
-
 import CommentSection from "../components/Comments/CommentSection";
-import { AuthContext } from "../context/auth.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 
 function WinesDetails(props) {
 
-  const { isLogin } = useContext(AuthContext)
+  const { isLogin, user: loggedUser } = useContext(AuthContext)
   const navigate = useNavigate();
   const { id } = useParams();
 
   // 1. Estados
-  const [wineDetail, setWineDetail] = useState(null);
+  const [ wineDetail, setWineDetail ] = useState(null);
+  const [ likedWine, setLikedWine ] = useState(false);
+  const [ likesId, setLikesId ] = useState([])
+  const [ count, setCount ] = useState()
 
+  
   // 2. ComponenDIdMount
   useEffect(() => {
     getWineDetails();
-  }, []);
+  }, [likesId]);
 
   // 3. Llamar a la DB
   const getWineDetails = async () => {
     try {
-      const response = await getWineDetailsService(id);
-      setWineDetail(response.data);
+      const {data} = await getWineDetailsService(id);
+      setWineDetail(data);
+       setCount(data.likeCount);
+
     } catch (err) {
       navigate("/error");
     }
   };
+
+  const handleLike = async (e) => {
+    e.preventDefault()
+    setLikedWine(!likedWine)
+
+    try {
+
+      const { data } = await addLikesService(id, loggedUser._id)
+      setLikesId(data.likes);
+      console.log(data.likes);
+      console.log(loggedUser._id);
+      setCount(data.likes.length);
+
+      // const arrLikes = data.likes.find((eachLike) => eachLike === loggedUser._id)
+      // console.log(arrLikes);
+      // setLikesId(arrLikes)
+
+      // if ( arrLikes === loggedUser._id ) {
+      //   setLikedWine(true)
+      // }
+
+      console.log(data.likeCount);
+
+    } catch(err) {
+      navigate('/error')
+    }
+  }
+
+  useEffect(() => {
+    checkIfWineLiked()
+  }, [])
+
+  const checkIfWineLiked = () => {
+    if ( likesId === loggedUser._id ) {
+      setLikedWine(true)
+    }
+    console.log(likesId);
+    console.log(loggedUser._id);
+  }
 
   // Borrar wino
   const handleDelete = async () => {
@@ -44,12 +91,12 @@ function WinesDetails(props) {
     }
   };
 
-  console.log(wineDetail)
-
   // 4. El loading o Spinner
   if (wineDetail === null) {
     return <h3>...Loading...</h3>;
   }
+
+  console.log(likedWine);
 
   return (
     <div>
@@ -76,6 +123,9 @@ function WinesDetails(props) {
               })}
             </p>
             <p className="wine-description">{wineDetail.description}</p>
+            {likedWine ? <FontAwesomeIcon icon={faHeart} style={{color: 'red'}} type='submit' onClick={handleLike}></FontAwesomeIcon> : <FontAwesomeIcon type='submit' icon={faHeart} onClick={handleLike}></FontAwesomeIcon>}
+            <span>{count}</span>
+          
             <hr />
             { isLogin &&
             <>

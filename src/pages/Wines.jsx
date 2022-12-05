@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { winesListService } from "../services/wines.services";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
 import Search from "../components/Search";
 
@@ -158,8 +156,8 @@ function Wines() {
               <h5 className="wine-rating">{rating}</h5>
 
               <p>
-                {eachWine.uva.map((item) => {
-                  return <span className="wine-uva">{item + ". "}</span>;
+                {eachWine.uva.map((item, i) => {
+                  return <span key={i} className="wine-uva">{item + ". "}</span>;
                 })}
               </p>
               <br />
