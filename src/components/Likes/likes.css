@@ -1,0 +1,9 @@
+.heart {
+  margin-right: .8em;
+}
+
+.container-likes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
