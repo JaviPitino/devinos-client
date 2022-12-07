@@ -50,7 +50,7 @@
   font-weight: 100;
 }
 
-.navbar-btn:hover {
+.navbar-btn:hover, .navbar-btn:focus {
   font-weight: 500!important;
   color: rgb(114, 55, 55)!important;
 }
