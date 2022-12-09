@@ -1,7 +1,13 @@
+.container-show-comments {
+  width: 100%;
+  margin-top: 8px;
+  text-align: left;
+  margin-right: 10px;
+}
+
 .comment-box {
   text-align: left;
   max-height: 200px;
-  width: 100%;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -16,7 +22,8 @@
   text-align: left;
   background-color: white;
   margin-bottom: 15px;
-  padding: 5px
+  padding: 5px;
+  width: 100%;
 }
 
 .img-comment {
@@ -38,4 +45,45 @@
 .comment {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+}
+
+.btn-show-comments {
+  /* padding-top: 10px; */
+  font-size: 1.3em;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.show-comments {
+  /*duracion de la animacion, puedes variar el tiempo, entre mas grande mas tarda el efecto*/
+  animation-duration: .8s;
+  animation-fill-mode: both;
+  /*le indicas que animacion quieres aplicarle, animacion hecha por ti en un keyframe*/
+  animation-name: fadeIn;
+}
+
+.hide-element {
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-name: fadeOut;
+}
+
+/*KeyFrames*/
+/*La animacion hecha por ti, puedes ponerle cualquier nombre, solo es para identificarlo*/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

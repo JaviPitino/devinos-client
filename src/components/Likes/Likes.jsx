@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import { useNavigate, useParams } from 'react-router-dom';
 
+
 function Likes({ wineDetail, reload }) {
 
   const { user: loggedUser } = useContext(AuthContext)
@@ -53,9 +54,10 @@ function Likes({ wineDetail, reload }) {
   }
 
   return (
+
     <div className='container-likes'>
         {likedWine ? <BsHeartFill className='heart' style={{color: 'red'}} type='submit' onClick={handleLike} onMouseEnter={onEnter} onMouseLeave={onLeave}  /> : <BsHeart  className='heart' style={{color: '#b9b8b8'}} type='submit' onClick={handleLike} onMouseEnter={onEnter} onMouseLeave={onLeave} /> }
-        {wineDetail.likes.length === 1 ? <span className='txt-like' >A <strong>{wineDetail.likes.length}</strong> persona le gusta este vino</span> : <span className='txt-like'>A <strong>{wineDetail.likes.length}</strong> personas les gusta este vino</span> }
+        {wineDetail.likes.length === 1 ? <span className='txt-like' >A <strong>{wineDetail.likes.length}</strong> persona le gusta este vino</span> : <span className='txt-like'>A <strong>{wineDetail.likes.length}</strong> personas les gusta este vino</span>}
     </div>
   )
 }

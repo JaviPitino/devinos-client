@@ -33,10 +33,10 @@ function Bodegas() {
   }
 
   return (
-    <div className="wineries" >
-      {bodegas.map((eachBodega) => {
-        return (
-          
+    <div id="gen-container">
+      <div className="wineries">
+        {bodegas.map((eachBodega) => {
+          return (
             <div className="winerie-container" key={eachBodega._id}>
               <div className="img-winerie-container">
                 <img
@@ -56,9 +56,9 @@ function Bodegas() {
               </div>
               <br />
             </div>
-       
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

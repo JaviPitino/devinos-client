@@ -8,8 +8,16 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 } */
+/* 
+#gen-container {
+
+  width: 100vw;
+  max-width: 1200px;
+} */
 
 .wineries {
+  width: 100vw;
+  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -22,11 +30,13 @@
   padding-bottom: 15px;
   align-items: flex-start;
   padding-left: 15px;
+  padding-right: 15px;
   height: 110px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   transition: ease-in .4s;
   opacity: .8;
+  width: 350px;
 }
 
 .winerie-container:hover {
@@ -43,8 +53,6 @@
 .winerie-title {
   width: 200px;
   max-width: 90%;
-  padding-bottom: 10px;
-  border-bottom: .5px solid crimson;
   margin: 0 0 5px 0;
   font-size: 1.1em;
 }
@@ -61,6 +69,7 @@
 .img-winerie {
   border-radius: 10px;
   width: 100px;
+  height: 70px;
 }
 
 .bodega-wine-details-tipo {
@@ -92,8 +101,7 @@
 }
 
 .leer-mas {
-  padding: 7px;
-  border: 1px solid crimson;
+  padding: 10px 0 0 0;
   width: 100px;
   border-radius: 4px;
   color: crimson!important;
@@ -103,8 +111,7 @@
 }
 
 .leer-mas:hover {
-  background-color: crimson;
-  color: whitesmoke!important;
+  color: rgb(189, 136, 136)!important;
 }
 
 .container-grande {
@@ -113,12 +120,18 @@
 
 .card-bodega {
   background-color: rgb(224, 224, 224);
-  padding: 2.5em;
+  padding: 2.2em;
   border-radius: 10px;
+  height: 130vh;
 }
 
 .title-bodega-wine-detail {
+  color: rgb(100, 26, 26);
   text-align: left;
+  margin-bottom: 1em;
+  font-family: 'Roboto' sans-serif;
+  text-transform: uppercase;
+  font-weight: 100;
 }
 
 .bodega-container-details {
