@@ -26,6 +26,7 @@ function ShowComments() {
           onClick={() => setShowComment(!showComment)}
           onMouseEnter={onEnter}
           onMouseLeave={onLeave}
+          type="submit"
          />
       ) : (
         <BsChatRightTextFill
@@ -34,12 +35,12 @@ function ShowComments() {
           onClick={() => setShowComment(!showComment)}
           onMouseEnter={onEnter}
           onMouseLeave={onLeave}
+          type="submit"
         />
       )}
       <span>Deja tu comentario</span>
-      {/* {showComment ? "Ocultar" : <FaRegComments/>} */}
       <div className={showComment ? "show-comments" : "hide-element"}>
-        {showComment && <CommentSection />}
+        {showComment && <CommentSection className='hide-component'  />}
       </div>
     </div>
   );

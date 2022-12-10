@@ -48,17 +48,14 @@
 }
 
 .btn-show-comments {
-  /* padding-top: 10px; */
   font-size: 1.3em;
   text-align: left;
   margin-right: 10px;
 }
 
 .show-comments {
-  /*duracion de la animacion, puedes variar el tiempo, entre mas grande mas tarda el efecto*/
   animation-duration: .8s;
   animation-fill-mode: both;
-  /*le indicas que animacion quieres aplicarle, animacion hecha por ti en un keyframe*/
   animation-name: fadeIn;
 }
 
@@ -69,7 +66,6 @@
 }
 
 /*KeyFrames*/
-/*La animacion hecha por ti, puedes ponerle cualquier nombre, solo es para identificarlo*/
 @keyframes fadeIn {
   0% {
     opacity: 0;

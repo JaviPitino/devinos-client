@@ -93,8 +93,13 @@ function WinesDetails() {
               })}
             </p>
             <p className="wine-description">{wineDetail.description}</p>
+            { isLogin &&
+            <>
             <Likes wineDetail={wineDetail} reload={getWineDetails} />
             <ShowComments />
+            </>
+            }
+
             <hr />
            
           </div>
@@ -106,7 +111,7 @@ function WinesDetails() {
               <img
                 src={wineDetail.bodega.image}
                 alt="imagen de la bodega"
-                width={150}
+                width={250}
               />
             </div>
             <div>

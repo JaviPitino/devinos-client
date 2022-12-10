@@ -17,44 +17,14 @@ import IsPrivate from './components/IsPrivate';
 import IsAdmin from './components/IsAdmin';
 import WinesEdit from './pages/WinesEdit';
 import BodegasEdit from './pages/bodegas/BodegasEdit';
-import { useState, useEffect } from 'react';
-import { winesListService } from './services/wines.services'
 
 function App() {
 
-  // const navigate = useNavigate()
-  // const [ wines, setWines ] = useState([])
 
-  // // 2. ComponentDidMount
-  // useEffect(() => {
-  //   getAllWines();
-  // }, []);
-
-  // // 3. Funcion que busca la Data en la API
-  // const getAllWines = async () => {
-  //   try {
-  //     const { data } = await winesListService();
-  //     const filterArr = data.map((each) => {
-  //       let newObj = { id: each._id, likes: each.likes }
-  //       return newObj
-  //     })
-  //     setWines(filterArr)
-
-  //   } catch (err) {
-  //     if (err.response.status === 401) {
-  //       navigate("/login");
-  //     } else {
-  //       navigate("/error");
-  //     }
-  //   }
-  // };
-
-  // console.log(wines);
 
   return (
     <div className="App">
       <NavbarUp />
-
       <Routes>
 
         <Route path="/" element={ <Home />} />
