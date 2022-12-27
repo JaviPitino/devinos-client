@@ -7,12 +7,12 @@ import {
 } from "../../services/auth.service";
 
 function DeleteWineWishList() {
+
   const [winesWished, setWineWished] = useState([]);
 
-  const { user: loggedUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   let { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     showItemsWishlist();
@@ -20,9 +20,7 @@ function DeleteWineWishList() {
 
   const showItemsWishlist = async () => {
     try {
-      const { data } = await getWishlistService(id, loggedUser._id);
-
-      console.log(data.wishlist);
+      const { data } = await getWishlistService(id, user._id);
       setWineWished(data.wishlist);
     } catch (err) {
       navigate("/error");
@@ -32,7 +30,7 @@ function DeleteWineWishList() {
   const handleDelete = async () => {
     try {
       
-      await deleteWineWishListService(id, loggedUser._id);
+      await deleteWineWishListService(id, user._id);
 
     } catch (err) {
       navigate("/error");

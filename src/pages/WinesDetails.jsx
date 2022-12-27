@@ -19,12 +19,12 @@ function WinesDetails() {
   // 1. Estados
   const [wineDetail, setWineDetail] = useState(null);
 
-  // 2. ComponenDIdMount
+  // 2. ComponenDidMount
   useEffect(() => {
     getWineDetails();
   }, []);
 
-  // 3. Llamar a la DB
+  // 3. Llamada a la DB
   const getWineDetails = async () => {
     try {
       const { data } = await getWineDetailsService(id);
@@ -96,7 +96,7 @@ function WinesDetails() {
             <p className="wine-description">{wineDetail.description}</p>
             { isLogin &&
             <>
-            <WishList />
+            <WishList wineDetail={wineDetail} reload={getWineDetails}/>
             <DeleteWineWishList />
             <Likes wineDetail={wineDetail} reload={getWineDetails} />
             <ShowComments />
