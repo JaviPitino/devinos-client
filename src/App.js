@@ -1,5 +1,5 @@
 
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NavbarUp from './components/NavbarUp';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
@@ -17,10 +17,9 @@ import IsPrivate from './components/IsPrivate';
 import IsAdmin from './components/IsAdmin';
 import WinesEdit from './pages/WinesEdit';
 import BodegasEdit from './pages/bodegas/BodegasEdit';
+import ShowWishList from './components/wishList/ShowWishList';
 
 function App() {
-
-
 
   return (
     <div className="App">
@@ -29,7 +28,7 @@ function App() {
 
         <Route path="/" element={ <Home />} />
         {/* Autorizacion */}
-        <Route path={"/signup"} element={ <Signup /> } />
+        <Route path={"/signup"} element={ <Signup />} />
         <Route path={"/login"} element={ <Login /> } />
         {/* Perfil */}
         <Route path={"/profile"}  end={true} element={ <Profile /> } />
@@ -44,6 +43,8 @@ function App() {
         <Route path={"/bodegas/:id"} element={ <BodegaDetails /> } />
         <Route path={"/bodegas/:id/edit"} element={ <IsPrivate> <IsAdmin> <BodegasEdit /> </IsAdmin> </IsPrivate> } />
         <Route path={'/bodegas/create'} element={ <IsPrivate> <IsAdmin> <BodegasCreate /> </IsAdmin> </IsPrivate> } />
+        {/*wishlist*/}
+        <Route path={"/wishlist"} element={ <IsPrivate> <ShowWishList /> </IsPrivate> } />
         {/* Error */}
         <Route path={"/error"} element={ <Error /> } />
 

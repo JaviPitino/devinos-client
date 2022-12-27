@@ -49,15 +49,12 @@ function CommentSection() {
   const getAllComments = async () => {
     try {
       const { data } = await getAllCommentsService(id, comment);
-      // console.log('allComments', data);
       setAllComments(data.reverse());
 
     } catch (err) {
       navigate("/error");
     }
   };
-
-  // console.log([allComments]);
 
   return (
     <div>

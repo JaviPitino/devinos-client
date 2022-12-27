@@ -22,11 +22,11 @@ function Profile() {
       const response = await getProfileDetailsService(user._id)
       
       setProfileDetails(response.data)
-
+      console.log(response.data);
     } catch(err) {
       navigate('/error')
     }
-  } 
+  }
   
   if (!profileDetails) {
     return <h3>...Loading...</h3>
@@ -43,7 +43,8 @@ function Profile() {
             {profileDetails.username[0].toUpperCase() + profileDetails.username.slice(1)} 
           </h4>{" "}
           <img className="saludo" src={profileDetails.image} alt="imagen perfil" width={50}/>
-        <NavLink to={`/profile/${profileDetails._id}/edit`} className="saludo"><FontAwesomeIcon icon={faPenToSquare} /></NavLink> 
+        <NavLink to={`/profile/${profileDetails._id}/edit`} className="saludo"><FontAwesomeIcon type='submit' icon={faPenToSquare} /></NavLink> 
+       
         </div>
       )}
     </div>

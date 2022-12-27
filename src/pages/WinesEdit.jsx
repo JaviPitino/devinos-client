@@ -183,7 +183,6 @@ function WinesEdit() {
             name="uva"
             htmlFor="uva"
             onChange={handleChange}
-            
             multiple
           >
             {uva.map((eachUva) => {

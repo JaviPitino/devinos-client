@@ -9,12 +9,12 @@ function AuthWrapper(props) {
   // Estados y funciones
   const [isLogin, setIsLogin ] = useState(false)
   const [ user, setUser ] = useState(null)
- 
+  const [ isLoading, setIsLoading ] = useState(true)
   const [ role, setRole ] = useState(null)
 
 
   const authenticatedUser = async () => {
-
+    setIsLoading(true)
 
     try {
       // llamar a la ruta verify
@@ -24,6 +24,7 @@ function AuthWrapper(props) {
       setIsLogin(true)
       setUser(response.data)
       setRole(response.data.role)
+      setIsLoading(false)
       return response.data.role
 
     } catch(err) {
@@ -31,6 +32,7 @@ function AuthWrapper(props) {
       setIsLogin(false)
       setUser(null)
       setRole(null)
+      setIsLoading(false)
     }
   }
 
@@ -41,6 +43,10 @@ function AuthWrapper(props) {
   useEffect(() => {
     authenticatedUser()
   }, [])
+
+  if(isLoading === true) {
+    return <h4 className='App' >Verificando Usuario</h4>
+  }
 
   return(
     <AuthContext.Provider value={passedContext}>

@@ -1,14 +1,13 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import IsAdmin from "./IsAdmin";
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
 
-function NavbarUp() {
+function NavbarUp({ handleShowModal }) {
 
-  const { isLogin, user, authenticatedUser } = useContext(AuthContext);
-  const { id } = useParams()
+  const { isLogin, authenticatedUser } = useContext(AuthContext);
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
@@ -18,7 +17,6 @@ function NavbarUp() {
   return (
     <div>
       {isLogin === true ? (
-
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
           <Navbar.Brand as={NavLink} to="/">WinesRoutes</Navbar.Brand>
@@ -28,6 +26,7 @@ function NavbarUp() {
               <NavLink className='navbar-btn' to="/wines">Vinos</NavLink>
               <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
               <NavLink className='navbar-btn' to="/profile">Mi perfil</NavLink>
+              <NavLink className='navbar-btn' to="/wishlist">Mi Lista de favoritos</NavLink>
               <IsAdmin>
                 <NavDropdown className='navbar-btn dropdown' title="Admin" id="collasible-nav-dropdown">
                   <NavDropdown.Item as={NavLink} className="navbar-btn dropdown-items" to="/wines/create">Añadir un Vino</NavDropdown.Item>
@@ -47,26 +46,10 @@ function NavbarUp() {
           </Navbar.Collapse>
         </Container>
         </Navbar>
-
-        // <nav className="navbar">
-        //   <NavLink className='navbar-btn' to="/">Home</NavLink>
-        //   <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
-        //   <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
-        //   <NavLink className='navbar-btn' to="/profile">Mi perfil</NavLink>
-        //   <IsAdmin>
-        //     <NavLink className='navbar-btn' to="/wines/create">Añade un vino</NavLink>
-        //     <NavLink className='navbar-btn' to="/bodegas/create">Añade una bodega</NavLink>
-        //   </IsAdmin>
-        //   <div className="btn-logout-container">
-        //     <button className="btn-logout" onClick={handleLogout}>Cerrar sesión</button>
-        //   </div>
-        // </nav>
-      
       ) : (
-
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand to="/">WinesRoutes</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">WinesRoutes</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -80,14 +63,6 @@ function NavbarUp() {
           </Navbar.Collapse>
         </Container>
         </Navbar>
-
-        // <nav className="navbar">
-        //   <NavLink className='navbar-btn' to="/">Home</NavLink>
-        //   <NavLink className='navbar-btn'to="/wines">Vinos</NavLink>
-        //   <NavLink className='navbar-btn' to="/bodegas">Bodegas</NavLink>
-        //   <NavLink className='navbar-btn' to="/signup"> Registrar </NavLink>
-        //   <NavLink className='navbar-btn' to="/login"> Acceder </NavLink>
-        // </nav>
       )}
     </div>
   );

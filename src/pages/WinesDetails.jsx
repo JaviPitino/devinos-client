@@ -6,9 +6,10 @@ import {
   getWineDetailsService,
 } from "../services/wines.services";
 import IsAdmin from "../components/IsAdmin";
-import CommentSection from "../components/Comments/CommentSection";
 import Likes from "../components/Likes/Likes";
 import ShowComments from "../components/Comments/ShowComments";
+import WishList from "../components/wishList/WishList";
+import DeleteWineWishList from "../components/wishList/DeleteWineWishList";
 
 function WinesDetails() {
   const { isLogin } = useContext(AuthContext);
@@ -95,6 +96,8 @@ function WinesDetails() {
             <p className="wine-description">{wineDetail.description}</p>
             { isLogin &&
             <>
+            <WishList />
+            <DeleteWineWishList />
             <Likes wineDetail={wineDetail} reload={getWineDetails} />
             <ShowComments />
             </>
