@@ -7,15 +7,18 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { AuthContext } from "../../context/auth.context";
+import ShowComments from "./ShowComments";
 
-function CommentSection() {
+function CommentSection(props) {
   const { isLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { addComment } = props
   // const commentsRef = useRef();
 
   const [comment, setComment] = useState("");
-  const [allComments, setAllComments] = useState([]);
+  // const [allComments, setAllComments] = useState([]);
 
   // handlers
   const handleChangeComment = (e) => setComment(e.target.value);
@@ -33,6 +36,9 @@ function CommentSection() {
       console.log(data.comment);
       setComment(data.comment);
       setComment("");
+
+      console.log(comment);
+      addComment(comment)
       
       // commentsRef.current.scrollIntoView({ behavior: 'smooth' })
 
@@ -42,19 +48,19 @@ function CommentSection() {
     }
   };
 
-  useEffect(() => {
-    getAllComments();
-  }, [comment]);
+  // useEffect(() => {
+  //   getAllComments();
+  // }, [comment]);
 
-  const getAllComments = async () => {
-    try {
-      const { data } = await getAllCommentsService(id, comment);
-      setAllComments(data.reverse());
+  // const getAllComments = async () => {
+  //   try {
+  //     const { data } = await getAllCommentsService(id, comment);
+  //     setAllComments(data.reverse());
 
-    } catch (err) {
-      navigate("/error");
-    }
-  };
+  //   } catch (err) {
+  //     navigate("/error");
+  //   }
+  // };
 
   return (
     <div>
@@ -77,7 +83,7 @@ function CommentSection() {
             </Form>
           </div>
           <hr />
-          <div className="comment-box">
+          {/* <div className="comment-box">
             <h6> Comentarios: </h6>
             {allComments.map((each) => {
               return (
@@ -99,15 +105,13 @@ function CommentSection() {
                         </span>
                       </div>
                     </div>
-                   
                   ) : (
                     <></>
                   )}
                 </div>
               );
             })}
-          {/* <div ref={commentsRef} /> */}
-          </div>
+          </div> */}
         </div>
       )}
     </div>

@@ -123,9 +123,10 @@
 }
 
 .card-bodega {
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(238, 215, 215);
+  /* background-color: rgb(224, 224, 224); */
   padding: 2.2em;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   height: 130vh;
 }
 

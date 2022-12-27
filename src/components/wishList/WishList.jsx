@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { addWineToWishListService } from "../../services/auth.service";
 import toast, { Toaster } from "react-hot-toast";
-import { useEffect } from "react";
 
 function WishList() {
   const { user: loggedUser } = useContext(AuthContext);
@@ -13,13 +12,8 @@ function WishList() {
 
   const [addWishList, setAddWishList] = useState(null);
 
-  // useEffect(() => {
-  //   addWineToWishList()
-  // }, [])
-
   const addWineToWishList = async () => {
     toast.success("Añadido a favoritos");
-    // setAddWishList(!addWishList)
 
     try {
       const { data } = await addWineToWishListService(id, loggedUser._id);
@@ -61,7 +55,10 @@ function WishList() {
           },
         }}
       />
-      <button onClick={addWineToWishList}>Añadir a la wishlist</button>
+      {!addWishList ? <button onClick={addWineToWishList}>Añadir a la wishlist</button> : <button disabled={true} onClick={addWineToWishList}>Añadir a la wishlist</button>
+      
+      
+      }
     </>
   );
 }

@@ -1,0 +1,48 @@
+.super-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.wish-container {
+  margin: 5px 0 5px 0;
+  padding: 15px 0 15px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 350px;
+  opacity: .8;
+  transition: transform .4s;
+  background-color: white;
+}
+.wish-container:hover {
+  /* background-color: white; */
+  border-radius: 12px;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.title-wish {
+  text-align: left;
+  font-size: 1em;
+  margin: 0;
+}
+
+.img-wish {
+  padding-right: 1em;
+}
+
+.wish-likes-container {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.wish-likes {
+  font-size: .9em;
+}
