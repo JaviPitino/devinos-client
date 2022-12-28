@@ -60,3 +60,8 @@
 .bookmark:hover {
   transform: scale(1.5);
 }
+
+.message-wishlist {
+  margin-top: 50px;
+  color: #b8b8b8;
+}

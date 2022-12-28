@@ -43,7 +43,7 @@ function ShowComments({ comment }) {
       {!showComment ? (
         <BsChatRight
           className="btn-show-comments bookmark"
-          style={{ color: "#b9b8b8" }}
+          style={{ color: "#b8b8b8" }}
           onClick={() => setShowComment(!showComment)}
           type="submit"
         />
