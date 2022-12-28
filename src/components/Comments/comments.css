@@ -87,3 +87,19 @@
     opacity: 0;
   }
 }
+
+/* **** MEDIA QUERIES **** */
+
+@media(max-width: 330px) {
+  .comment {
+    font-size: .8em;
+  }
+  .username-comment {
+    font-size: .8em;
+  }
+
+  .img-comment {
+    width: 25px;
+    height: 25px;
+  }
+} 

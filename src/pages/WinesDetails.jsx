@@ -61,7 +61,7 @@ function WinesDetails() {
               width={120}
             />
           </div>
-                <div className="info-wine">
+          <div className="info-wine">
           {isLogin && (
               <>
                 <IsAdmin>
@@ -83,7 +83,7 @@ function WinesDetails() {
             <h6 className="wine-year">{wineDetail.year}</h6>
             {/* <h5 className="wine-rating">{rating}</h5> */}
 
-            <p>
+            <p className="wine-uva">
               {wineDetail.uva.map((item, i) => {
                 return (
                   <span key={i} className="wine-uva">
@@ -102,31 +102,29 @@ function WinesDetails() {
             <ShowComments />
             </>
             }
-
             <hr />
-           
           </div>
         </div>
         <div className="card-bodega">
           <h5 className="title-bodega-wine-detail">La bodega</h5>
           <div className="bodega-container-details">
             <div className="img-bodega-wine-details">
-              <img
+              <img className="img-bodega-detail"
                 src={wineDetail.bodega.image}
                 alt="imagen de la bodega"
                 width={250}
               />
             </div>
-            <div>
+            <div className="container-bodega-text">
               <span className="bodega-wine-name">{wineDetail.bodega.name}</span>
-              <p>{wineDetail.bodega.region}</p>
+              <p className="bodega-wine-region">{wineDetail.bodega.region}</p>
               <p className="bodega-wine-description">
                 {wineDetail.bodega.description}
               </p>
-            </div>
             <Link to={`/bodegas/${wineDetail.bodega._id}`} className="leer-mas">
               Leer más
             </Link>
+            </div>
           </div>
         </div>
       </div>

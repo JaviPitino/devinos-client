@@ -91,15 +91,15 @@ function WishList({wineDetail}) {
         toastOptions={{
           // Define default options
           className: "",
-          duration: 3000,
+          duration: 2000,
           style: {
-            background: "#363636",
+            background: "#5e2129",
             color: "#fff",
           },
 
           // Default options for specific types
           success: {
-            duration: 3000,
+            duration: 2000,
             theme: {
               primary: "green",
               secondary: "black",

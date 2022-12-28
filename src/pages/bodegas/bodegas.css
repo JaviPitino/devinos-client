@@ -11,6 +11,10 @@
   margin-bottom: 1em;
 }
 
+#gen-container {
+  margin-top: 25px;
+}
+
 .wineries {
   display: flex;
   flex-wrap: wrap;
@@ -21,12 +25,12 @@
 }
 
 .winerie-container {
+  height: 95px;
   margin: 5px 5px 5px 5px;
   padding: 15px 0 0px 15px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-width: 300px;
   opacity: .8;
   transition: transform .4s;
   background-color: white;
@@ -90,6 +94,7 @@
   font-weight: 700;
   display: flex;
   align-items: flex-start;
+  min-width: 250px;
 }
 
 .bodega-wine-year {
@@ -121,6 +126,15 @@
 
 .container-grande {
   display: flex;
+  margin-top: 35px;
+  width: 100%;
+  justify-content: center;
+}
+
+.container-txt-wineries {
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .card-bodega {
@@ -152,12 +166,24 @@
   display: block;
 }
 
-.wineries-container-det {
-  background-color: rgba(224, 224, 224);
+.wineries-wrap-container {
   display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(224, 224, 224);
+  justify-content: center;
+}
+
+.wineries-container-det {
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   padding: 5px 0 15px 0;
+  min-width: 220px;
+}
+
+.winerie-txt-det {
+  width: 150px;
 }
 
 .title-other-wines {
@@ -172,12 +198,16 @@
 
 .img-winerie-det {
   width: 2em;
-  margin: 0 0.5em 0 1.5em;
+  margin: 0 10px 0 15px;
   opacity: .7;
 }
 
 .img-winerie-det:hover {
   opacity: 1;
+}
+
+.img-bodega-detail {
+  width: 250px;
 }
 
 .img-bodega-wine-details {
@@ -190,6 +220,7 @@
 .img-winerie-big {
   margin: 0 50px;
   border-radius: 5px;
+  width: 350px;
 }
 
 .bodega-name-wines {
@@ -204,3 +235,178 @@
   display: flex;
   justify-content: center;
 }
+
+/* **** MEDIA QUERIES BODEGA **** */
+@media (max-width: 992px) {
+
+  .container-grande {
+    flex-direction: column;
+  }
+
+  .title-bodega-wine-detail2 {
+    margin-top: 25px;
+    padding: 0 60px;
+  }
+
+  .winerie-region2 {
+    padding: 0 60px;
+  }
+
+  .winerie-description {
+    margin: 0;
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 820px) {
+
+  .card-bodega {
+    height: 100%;
+  }
+
+  .container-bodega-text {
+    margin-left: 2em;
+    min-width: 250px;
+  }
+
+  .bodega-container-details {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+  }
+
+  .bodega-wine-name {
+    min-width: 200px;
+  }
+
+ .bodega-wine-region {
+  min-width: 200px;
+}
+
+  .bodega-wine-description {
+    width: 70%;
+  }
+
+  .img-bodega-detail {
+    width: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .card-bodega {
+    height: 90vh;
+  }
+
+  .title-bodega-wine-detail {
+    margin-left: 1.5em;
+  }
+
+  .img-bodega-wine-details {
+    margin-left: 2em;
+  }
+
+  .container-bodega-text {
+    margin-left: 2em;
+    min-width: 250px;
+  }
+
+  .bodega-container-details {
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .bodega-wine-name {
+    min-width: 200px;
+  }
+
+ .bodega-wine-region {
+  min-width: 200px;
+}
+
+  .bodega-wine-description {
+    width: 70%;
+  }
+}
+
+@media (max-width: 520px) {
+  .card-bodega {
+    height: 90%;
+  }
+}
+
+@media (max-width: 460px) {
+  .img-winerie-big {
+    width: 280px;
+  }
+
+  .title-bodega-wine-detail2 {
+    margin-top: 25px;
+    padding: 0 40px;
+  }
+
+  .winerie-region2 {
+    padding: 0 40px;
+  }
+
+  .winerie-description {
+    margin: 0;
+    padding: 0 40px;
+  }
+
+  .winerie-container {
+    width: 270px;
+  }
+
+  .winerie-title {
+    width: 160px;
+    font-size: 14px;
+  }
+
+  .winerie-region {
+    font-size: 12px;
+  }
+
+  .img-winerie {
+    width: 80px;
+    height: 55px;
+  }
+}
+
+@media(max-width: 380px) {
+  .bodega-name-wines {
+    width: 98%;
+    text-align: left;
+    font-size: .9em;
+  }
+
+  .img-winerie-big {
+    width: 260px;
+  }
+} 
+
+@media (max-width: 330px) {
+
+  .img-bodega-detail {
+    width: 70%;
+  }
+
+  .title-bodega-wine-detail {
+    margin-left: .5em;
+  }
+
+  .img-bodega-wine-details {
+    margin-left: 1em;
+  }
+
+  .container-bodega-text {
+    margin-left: 1em;
+    min-width: 250px;
+  }
+
+  .img-winerie-big {
+    width: 200px;
+  }
+}
+
+

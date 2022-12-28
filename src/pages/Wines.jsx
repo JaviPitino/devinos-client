@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { winesListService } from "../services/wines.services";
-import { Button } from "react-bootstrap";
 import Search from "../components/Search";
 
 function Wines() {
@@ -9,7 +8,6 @@ function Wines() {
 
   // 1. Crear estados
   const [wines, setWines] = useState([]);
-  // const [ newSearch, setNewSearch ] = useState("")
   const [allWinesToDisplay, setAllWinesToDisplay] = useState([]);
 
   // 2. ComponentDidMount
@@ -17,13 +15,14 @@ function Wines() {
     getAllWines();
   }, []);
 
-  // 3. Funcion que busca la Data en la API
+  // 3. Funcion que busca la Data de todos los vinos en la DB
   const getAllWines = async () => {
     try {
+
       const response = await winesListService();
       setWines(response.data);
       setAllWinesToDisplay(response.data);
-      // console.log(response.data);
+
     } catch (err) {
       if (err.response.status === 401) {
         navigate("/login");
@@ -139,7 +138,7 @@ function Wines() {
           <div className="super-container">
             <div className="wine-container" key={eachWine._id}>
               <div className="img-wine">
-                <img src={eachWine.image} alt="wine" width={50} />
+                <img className="img-wine-detail" src={eachWine.image} alt="wine" width={50} />
               </div>
               <div className="info-wine" key={eachWine._id}>
                 <Link to={`/wines/${eachWine._id}`}>

@@ -48,7 +48,7 @@ function Likes({ wineDetail, reload }) {
   return (
 
     <div className='container-likes'>
-        {likedWine ? <BsHeartFill className='heart bookmark' style={{color: '#bb1919'}} type='submit' onClick={handleLike} /> : <BsHeart className='heart bookmark' style={{color: '#b8b8b8'}} type='submit' onClick={handleLike} /> }
+        {likedWine ? <BsHeartFill className='heart bookmark' style={{color: '#bb1919', width: '1.3em', height: '1.3em'}} type='submit' onClick={handleLike} /> : <BsHeart className='heart bookmark' style={{color: '#b8b8b8', width: '1.3em', height: '1.3em'}} type='submit' onClick={handleLike} /> }
         {wineDetail.likes.length === 1 ? <span className='txt-like' >A <strong>{wineDetail.likes.length}</strong> persona le gusta este vino</span> : <span className='txt-like'>A <strong>{wineDetail.likes.length}</strong> personas les gusta este vino</span>}
     </div>
   )

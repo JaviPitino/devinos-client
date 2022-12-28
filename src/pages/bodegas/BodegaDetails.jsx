@@ -47,7 +47,7 @@ function BodegaDetails() {
   }
 
   return (
-    <div>
+    <div className="super-container-wineries">
       {isLogin && (
         <IsAdmin>
           <div className="container-btns-edit centered">
@@ -63,44 +63,51 @@ function BodegaDetails() {
       )}
       <div className="container-grande">
         <div>
-          <img className="img-winerie-big" src={bodegaDetails.image} alt="winerie image" width={400} />
+          <img
+            className="img-winerie-big"
+            src={bodegaDetails.image}
+            alt="winerie image"
+            width={400}
+          />
         </div>
-        <div>
+        <div className="container-txt-wineries">
           <h4 className="title-bodega-wine-detail2">{bodegaDetails.name}</h4>
           <p className="winerie-region2">{bodegaDetails.region}</p>
-          <p className='winerie-description'>{bodegaDetails.description}</p>
+          <p className="winerie-description">{bodegaDetails.description}</p>
         </div>
       </div>
-        <h5 className="title-other-wines">Vinos de la bodega:</h5>
-      <div className="wineries-container-det">
-        {bodegaDetails.wines.map((eachWine) => {
-          let emptyStar = "☆";
-          let filledStar = "★";
+      <h5 className="title-other-wines">Vinos de la bodega:</h5>
+      <div className="wineries-wrap-container">
+        <div className="wineries-container-det">
+          {bodegaDetails.wines.map((eachWine) => {
+            let emptyStar = "☆";
+            let filledStar = "★";
 
-          const rating =
-            filledStar.repeat(Math.round(eachWine.puntuacion)) +
-            emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
-          return (
-            <div key={eachWine._id} className="wineries-container-det">
-              <div>
-              <Link to={`/wines/${eachWine._id}`}>
-                <img
-                  className="img-winerie-det"
-                  src={eachWine.image}
-                  alt="wine image"
-                />
-                </Link>
+            const rating =
+              filledStar.repeat(Math.round(eachWine.puntuacion)) +
+              emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
+            return (
+              <div key={eachWine._id} className="wineries-container-det">
+                <div>
+                  <Link to={`/wines/${eachWine._id}`}>
+                    <img
+                      className="img-winerie-det"
+                      src={eachWine.image}
+                      alt="wine image"
+                    />
+                  </Link>
+                </div>
+                <div className="winerie-txt-det">
+                  <span className="bodega-wine-name">{eachWine.name}</span>
+                  <p className="bodega-wine-year">{eachWine.year}</p>
+                  <p className="bodega-wine-details-tipo">{eachWine.tipo}</p>
+                  <p>{rating}</p>
+                  <br />
+                </div>
               </div>
-              <div>
-                <span className="bodega-wine-name">{eachWine.name}</span>
-                <p className="bodega-wine-year">{eachWine.year}</p>
-                <p className="bodega-wine-details-tipo">{eachWine.tipo}</p>
-                <p>{rating}</p>
-                <br />
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

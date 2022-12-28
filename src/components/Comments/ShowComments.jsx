@@ -55,7 +55,7 @@ function ShowComments({ comment }) {
           type="submit"
         />
       )}
-      <span>Deja tu comentario</span>
+      <span className="comment">Deja tu comentario</span>
       <div className={showComment ? "show-comments" : "hide-element"}>
         {showComment && (
           <CommentSection addComment={addComment} className="hide-component" />
