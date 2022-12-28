@@ -9,7 +9,6 @@ import IsAdmin from "../components/IsAdmin";
 import Likes from "../components/Likes/Likes";
 import ShowComments from "../components/Comments/ShowComments";
 import WishList from "../components/wishList/WishList";
-import DeleteWineWishList from "../components/wishList/DeleteWineWishList";
 
 function WinesDetails() {
   const { isLogin } = useContext(AuthContext);
@@ -96,9 +95,10 @@ function WinesDetails() {
             <p className="wine-description">{wineDetail.description}</p>
             { isLogin &&
             <>
-            <WishList wineDetail={wineDetail} reload={getWineDetails}/>
-            <DeleteWineWishList />
+            <div className="likes-wishlist">
             <Likes wineDetail={wineDetail} reload={getWineDetails} />
+            <WishList wineDetail={wineDetail} reload={getWineDetails}/>
+            </div>
             <ShowComments />
             </>
             }

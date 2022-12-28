@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './likes.css'
-import gsap from 'gsap';
+import '../wishList/wishlist.css'
 import { BsHeartFill, BsHeart } from 'react-icons/bs'
 import { addLikesService } from '../../services/wines.services'
 import { useContext } from 'react';
@@ -30,14 +30,6 @@ function Likes({ wineDetail, reload }) {
     }
   }
 
-  // Animation likes from GSAP
-  const onEnter = () => {
-    gsap.to('.heart', { scale: 1.5 });
-  };
-  const onLeave = () => {
-    gsap.to('.heart', { scale: 1 });
-  };
-
   const handleLike = async (e) => {
     e.preventDefault()
     setLikedWine(!likedWine)
@@ -56,7 +48,7 @@ function Likes({ wineDetail, reload }) {
   return (
 
     <div className='container-likes'>
-        {likedWine ? <BsHeartFill className='heart' style={{color: 'red'}} type='submit' onClick={handleLike} onMouseEnter={onEnter} onMouseLeave={onLeave}  /> : <BsHeart  className='heart' style={{color: '#b9b8b8'}} type='submit' onClick={handleLike} onMouseEnter={onEnter} onMouseLeave={onLeave} /> }
+        {likedWine ? <BsHeartFill className='heart bookmark' style={{color: '#bb1919'}} type='submit' onClick={handleLike} /> : <BsHeart className='heart bookmark' style={{color: '#b8b8b8'}} type='submit' onClick={handleLike} /> }
         {wineDetail.likes.length === 1 ? <span className='txt-like' >A <strong>{wineDetail.likes.length}</strong> persona le gusta este vino</span> : <span className='txt-like'>A <strong>{wineDetail.likes.length}</strong> personas les gusta este vino</span>}
     </div>
   )

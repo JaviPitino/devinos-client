@@ -136,32 +136,38 @@ function Wines() {
           emptyStar.repeat(5 - Math.round(eachWine.puntuacion));
 
         return (
-          <div className="wine-container" key={eachWine._id}>
-            <div className="img-wine">
-              <img src={eachWine.image} alt="wine" width={50} />
-            </div>
-            <div className="info-wine" key={eachWine._id}>
-              <Link to={`/wines/${eachWine._id}`}>
-                <h4 className="wine-title">{eachWine.name}</h4>
-              </Link>
-              <Link
-                to={`/bodegas/${eachWine.bodega._id}`}
-                className="bodega-name-wines"
-              >
-                Bodega: {eachWine.bodega.name}{" "}
-                <span className="flechita"> &nbsp; //</span>{" "}
-              </Link>
-              <p> {eachWine.tipo}</p>
-              <h6 className="wine-year">{eachWine.year}</h6>
-              <h5 className="wine-rating">{rating}</h5>
+          <div className="super-container">
+            <div className="wine-container" key={eachWine._id}>
+              <div className="img-wine">
+                <img src={eachWine.image} alt="wine" width={50} />
+              </div>
+              <div className="info-wine" key={eachWine._id}>
+                <Link to={`/wines/${eachWine._id}`}>
+                  <h4 className="wine-title">{eachWine.name}</h4>
+                </Link>
+                <Link
+                  to={`/bodegas/${eachWine.bodega._id}`}
+                  className="bodega-name-wines"
+                >
+                  Bodega: {eachWine.bodega.name}{" "}
+                  <span className="flechita"> &nbsp; //</span>{" "}
+                </Link>
+                <p> {eachWine.tipo}</p>
+                <h6 className="wine-year">{eachWine.year}</h6>
+                <h5 className="wine-rating">{rating}</h5>
 
-              <p>
-                {eachWine.uva.map((item, i) => {
-                  return <span key={i} className="wine-uva">{item + ". "}</span>;
-                })}
-              </p>
-              <br />
-              <br />
+                <p>
+                  {eachWine.uva.map((item, i) => {
+                    return (
+                      <span key={i} className="wine-uva">
+                        {item + ". "}
+                      </span>
+                    );
+                  })}
+                </p>
+                <br />
+                <br />
+              </div>
             </div>
           </div>
         );

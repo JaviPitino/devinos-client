@@ -46,3 +46,17 @@
 .wish-likes {
   font-size: .9em;
 }
+
+.likes-wishlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookmark {
+  transition: transform .5s;
+}
+
+.bookmark:hover {
+  transform: scale(1.5);
+}

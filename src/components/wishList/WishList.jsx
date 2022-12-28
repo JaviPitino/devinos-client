@@ -6,6 +6,7 @@ import { addWineToWishListService } from "../../services/auth.service";
 import { getProfileDetailsService } from "../../services/auth.service"
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
+import { BsBookmark, BsBookmarkFill } from 'react-icons/bs'
 
 function WishList({wineDetail}) {
 
@@ -56,7 +57,11 @@ function WishList({wineDetail}) {
     e.preventDefault()
     // Actualizamos el estado con lo contrario de lo que esté
     setWishedWine(!wishedWine)
-    toast.success("Añadido a favoritos");
+    if (wishedWine === true) {
+      toast.error('Borrado de favoritos')
+    } else {
+      toast.success("Añadido a favoritos");
+    }
 
     try {
 
@@ -102,9 +107,7 @@ function WishList({wineDetail}) {
           },
         }}
       />
-      {!wishedWine ? <button onClick={handleWish}>Añadir a la wishlist</button> : <button style={{background: '#bb1919'}}>Añadido</button>
-      
-      
+      {!wishedWine ? <BsBookmark className='bookmark' type='submit' onClick={handleWish} style={{color: '#b8b8b8'}}>Añadir a la wishlist</BsBookmark> : <BsBookmarkFill  className='bookmark' type='submit' onClick={handleWish} style={{color: '#bb1919'}}>Añadido</BsBookmarkFill>
       }
     </>
   );

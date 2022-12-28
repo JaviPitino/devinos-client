@@ -127,16 +127,16 @@ a {
 }
  
 .wine-container {
-  margin-left: 10%;
-  margin-right: 10%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  min-width: 380px;
   width: 50%;
   transition: transform .2s;
 }
 
 .wine-container:hover {
+  min-width: 380px;
   background-color: white;
   border-radius: 12px;
   transform: scale(1.05);

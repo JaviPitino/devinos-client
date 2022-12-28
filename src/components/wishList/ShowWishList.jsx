@@ -47,7 +47,7 @@ function ShowWishList() {
                   {item.likes.length === 0 ? (
                     <BsHeart className="heart" />
                   ) : (
-                    <BsHeartFill className="heart" style={{ color: "red" }} />
+                    <BsHeartFill className="heart" style={{color: '#bb1919'}} />
                   )}
                   {item.likes.length === 1 ? (
                     <>
