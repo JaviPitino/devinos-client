@@ -308,7 +308,7 @@ p {
 
 /* **** SEARCH **** */
 .form {
-  margin: 0 15%;
+  margin: 25px 0 15px 0;
   width: 75%;
   align-items: flex-start;
   display: flex;
@@ -626,7 +626,7 @@ p {
   }
 
   .saludo {
-    width: 240px;
+    width: 180px;
   }
 
   .container-edit {
