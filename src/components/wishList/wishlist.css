@@ -15,7 +15,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  min-width: 350px;
+  min-width: 275;
+  width: 350px;
   opacity: .8;
   transition: transform .4s;
   background-color: white;
@@ -64,4 +65,15 @@
 .message-wishlist {
   margin-top: 50px;
   color: #b8b8b8;
+}
+
+/* **** MEDIA QUERIES **** */
+@media (max-width: 380px) {
+  .wish-container {
+    width: 275px;
+  }
+  .wish-likes {
+    font-size: .8em;
+  }
+  
 }
