@@ -18,6 +18,7 @@ import IsAdmin from './components/IsAdmin';
 import WinesEdit from './pages/WinesEdit';
 import BodegasEdit from './pages/bodegas/BodegasEdit';
 import ShowWishList from './components/wishList/ShowWishList';
+import Footer from './components/footer/Footer';
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
         <Route path={"/error"} element={ <Error /> } />
 
       </Routes>
-
+      <Footer />
     </div>
   );
 }

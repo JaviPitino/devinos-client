@@ -17,9 +17,11 @@ function NavbarUp({ handleShowModal }) {
   return (
     <div>
       {isLogin === true ? (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand as={NavLink} to="/">WinesRoutes</Navbar.Brand>
+          <Navbar.Brand as={NavLink} src={"../devinos-logo-black.png"} to="/">
+            <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272915/wines-routes/logo-devinos-bold_rha6ba.png" alt="logo-devinos" width={150} />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -47,9 +49,11 @@ function NavbarUp({ handleShowModal }) {
         </Container>
         </Navbar>
       ) : (
-        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand as={NavLink} to="/">WinesRoutes</Navbar.Brand>
+          <Navbar.Brand as={NavLink} to="/">
+          <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673123232/wines-routes/devinos-logo_xhuu7p.png" alt="logo-devinos" width={150} />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
