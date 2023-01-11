@@ -20,7 +20,7 @@ function NavbarUp({ handleShowModal }) {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={NavLink} src={"../devinos-logo-black.png"} to="/">
-            <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272915/wines-routes/logo-devinos-bold_rha6ba.png" alt="logo-devinos" width={150} />
+            <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272915/wines-routes/logo-devinos-bold_rha6ba.png" alt="logo-devinos" width={120} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -52,7 +52,7 @@ function NavbarUp({ handleShowModal }) {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={NavLink} to="/">
-          <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673123232/wines-routes/devinos-logo_xhuu7p.png" alt="logo-devinos" width={150} />
+          <img src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272915/wines-routes/logo-devinos-bold_rha6ba.png" width={120} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -5,19 +5,17 @@
   justify-content: center;
   align-items: center;
   height: 80px;
-  /* position: absolute;
-  bottom: 0;
-  width: 100%; */
   overflow-x: hidden;
 }
 
 .list-footernav {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
 }
 
 .link-footer {
-
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -27,6 +25,8 @@
 }
 
 .col {
+  display: flex;
+  justify-content: flex-end;
   font-family: 'Roboto', sans-serif;
   max-width: 300px;
   font-size: 12px;
@@ -36,6 +36,10 @@
 }
 
 .col2 {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.col3 {
+  color: white;
 }

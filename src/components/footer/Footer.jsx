@@ -9,7 +9,11 @@ function Footer() {
 
   return (
     <div className="footer-container">
-      <div className="col"> &copy; Created & designed by <strong>Javier López</strong></div>
+      <div className="col">
+        <div className="firma">
+            &copy; Created & designed by <strong>Javier López</strong>
+        </div>
+      </div>
       <div className="col2">
         <img
           src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272916/wines-routes/logo-devinos-brand-bold_zgeud2.png"
@@ -18,39 +22,39 @@ function Footer() {
         />
       </div>
       <div className="col3">
-          {isLogin === true ? (
-            <div className="list-footernav">
-              <Link className="link-footer" to={"/wines"}>
-                Vinos
-              </Link>
-              <Link className="link-footer" to={"/bodegas"}>
-                Bodegas
-              </Link>
-              <Link className="link-footer" to={"/profile"}>
-                Mi perfil
-              </Link>
-              <Link className="link-footer" to={"/wishlist"}>
-                Mi lista de favoritos
-              </Link>
-            </div>
-          ) : (
-            <ul className="list-footernav">
-              <li>
-                <Link to={"/wines"}>Vinos</Link>
-              </li>
-              <li>
-                <Link to={"/bodegas"}>Bodegas</Link>
-              </li>
-              <li>
-                <Link to={"/signup"}>Registrar</Link>
-              </li>
-              <li>
-                <Link to={"/login"}>Acceder</Link>
-              </li>
-            </ul>
-          )}
-        </div>
+        {isLogin === true ? (
+          <div className="list-footernav">
+            <Link className="link-footer" to={"/wines"}>
+              Vinos
+            </Link>
+            <Link className="link-footer" to={"/bodegas"}>
+              Bodegas
+            </Link>
+            <Link className="link-footer" to={"/profile"}>
+              Mi perfil
+            </Link>
+            <Link className="link-footer" to={"/wishlist"}>
+              Mi lista de favoritos
+            </Link>
+          </div>
+        ) : (
+          <div className="list-footernav">
+            <Link className="link-footer" to={"/wines"}>
+              Vinos
+            </Link>
+            <Link className="link-footer" to={"/bodegas"}>
+              Bodegas
+            </Link>
+            <Link className="link-footer" to={"/signup"}>
+              Registrar
+            </Link>
+            <Link className="link-footer" to={"/login"}>
+              Acceder
+            </Link>
+          </div>
+        )}
       </div>
+    </div>
   );
 }
 
