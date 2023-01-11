@@ -18,11 +18,9 @@ function Wines() {
   // 3. Funcion que busca la Data de todos los vinos en la DB
   const getAllWines = async () => {
     try {
-
       const response = await winesListService();
       setWines(response.data);
       setAllWinesToDisplay(response.data);
-
     } catch (err) {
       if (err.response.status === 401) {
         navigate("/login");
@@ -102,30 +100,29 @@ function Wines() {
   }
 
   return (
-    <div>
+    <div className="bg-wines">
       <Search searchList={searchList} />
-      <button
-        className="btn-edit-wine"
-        onClick={handleAllWines}
-        variant="danger"
-      >
-        Todos
-      </button>
-      <button className="btn-edit-wine" onClick={HandleFilterTintos}>
-        Tintos
-      </button>
-      <button className="btn-edit-wine" onClick={HandleFilterRosados}>
-        Rosados
-      </button>
-      <button className="btn-edit-wine" onClick={HandleFilterBlancos}>
-        Blancos
-      </button>
-      <button className="btn-filtrar" onClick={handleSort}>
-        Ordenar
-      </button>
-      <br />
-      <br />
-
+      <div className="container-btns-wines">
+        <button
+          className="btn-edit-wine"
+          onClick={handleAllWines}
+          variant="danger"
+        >
+          Todos
+        </button>
+        <button className="btn-edit-wine" onClick={HandleFilterTintos}>
+          Tintos
+        </button>
+        <button className="btn-edit-wine" onClick={HandleFilterRosados}>
+          Rosados
+        </button>
+        <button className="btn-edit-wine" onClick={HandleFilterBlancos}>
+          Blancos
+        </button>
+        <button className="btn-filtrar" onClick={handleSort}>
+          Ordenar
+        </button>
+      </div>
       {allWinesToDisplay.map((eachWine) => {
         let emptyStar = "☆";
         let filledStar = "★";
@@ -138,7 +135,12 @@ function Wines() {
           <div className="super-container">
             <div className="wine-container" key={eachWine._id}>
               <div className="img-wine">
-                <img className="img-wine-detail" src={eachWine.image} alt="wine" width={50} />
+                <img
+                  className="img-wine-detail"
+                  src={eachWine.image}
+                  alt="wine"
+                  width={50}
+                />
               </div>
               <div className="info-wine" key={eachWine._id}>
                 <Link to={`/wines/${eachWine._id}`}>

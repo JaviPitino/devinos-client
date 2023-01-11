@@ -24,10 +24,10 @@
   display: flex;
   justify-content: flex-start;
   text-align: left;
-  background-color: white;
   margin-bottom: 6px;
   padding: 5px;
   width: 100%;
+  border-bottom: .2px solid #b8b8b8;
 }
 
 .img-comment {

@@ -59,7 +59,7 @@ function CommentSection(props) {
               <button className="btn-edit-wine">Enviar</button>
             </Form>
           </div>
-          <hr />
+          
         </div>
       )}
     </div>
