@@ -34,13 +34,14 @@
   align-items: flex-start;
   opacity: .8;
   transition: transform .4s;
-  background-color: white;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .winerie-container:hover {
   border-radius: 12px;
   opacity: 1;
   transform: scale(1.08);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .info-winerie {
@@ -54,10 +55,12 @@
   max-width: 90%;
   margin: 0 0 5px 0;
   font-size: 1.1em;
+  color: white;
 }
 
 .winerie-region {
   font-size: .9em;
+  color: white;
 }
 
 .winerie-region2 {
@@ -68,8 +71,9 @@
 .winerie-description {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  margin-right: 150px;
   text-align: left;
+  padding-bottom: 20px;
+  border-bottom: .3px solid #b8b8b8;
 }
 
 .img-winerie-container {
@@ -127,13 +131,21 @@
 .container-grande {
   display: flex;
   /* margin-top: 35px; */
-  width: 100%;
   justify-content: center;
+  align-items: flex-start;
+}
+
+.container-grande2 {
+  width: 80%;
+  display: flex;
+  /* margin-top: 35px; */
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .container-txt-wineries {
   width: 90%;
-  margin: 0 auto;
+  margin: 0;
   justify-content: center;
   color: white;
 }
@@ -169,6 +181,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.super-container-wineries {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .wineries-wrap-container {
@@ -247,7 +266,6 @@
 @media (max-width: 992px) {
 
   .card-bodega {
-    display: block;
     height: 100%;
     margin: 0;
     width: 100%;
@@ -256,20 +274,20 @@
   .container-grande {
     flex-direction: column;
   }
-/*
-  .title-bodega-wine-detail2 {
-    margin-top: 25px;
-    padding: 0 60px;
+
+  .container-grande2 {
+    flex-direction: column;
   }
 
-  .winerie-region2 {
-    padding: 0 60px;
-  }
 
-  .winerie-description {
+  .img-winerie-big {
     margin: 0;
-    padding: 0 60px;
-  } */
+  }
+
+  .container-txt-wineries {
+    margin-top: 25px;
+  }
+
   .bodega-container-details {
     display: flex;
     flex-direction: row;
@@ -279,47 +297,6 @@
     min-width: 200px;
     margin-left: 20px;
   }
-/*
-  .wine-container-det {
-    width: 80%;
-  }
-
-  .bodega-wine-description {
-    width: 500px;
-  } */
-}
-
-@media (max-width: 820px) {
-
-  /* .card-bodega {
-    height: 80%;
-  }
-
-  .container-bodega-text {
-    min-width: 250px;
-  }
-
-  .bodega-container-details {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-  }
-
-  .bodega-wine-name {
-    min-width: 200px;
-  }
-
- .bodega-wine-region {
-  min-width: 200px;
-}
-
-  .bodega-wine-description {
-    width: 70%;
-  }
-
-  .img-bodega-detail {
-    width: 250px;
-  } */
 }
 
 @media (max-width: 600px) {
@@ -346,7 +323,7 @@
     width: 280px;
   }
 
-  .title-bodega-wine-detail2 {
+  /* .title-bodega-wine-detail2 {
     margin-top: 25px;
     padding: 0 40px;
   }
@@ -376,42 +353,27 @@
   .img-winerie {
     width: 80px;
     height: 55px;
-  }
-}
-
-@media(max-width: 380px) {
-  /* .bodega-name-wines {
-    width: 98%;
-    text-align: left;
-    font-size: .9em;
   } */
-} 
+}
 
 @media (max-width: 330px) {
 
+  .img-winerie-big {
+    width: 220px;
+  }
+
   .card-bodega {
     max-height: 550px;
+
   }
   .img-bodega-detail {
    width: 200px;
   }
-/*
-  .title-bodega-wine-detail {
-    margin-left: .5em;
-  } */ 
 
   .container-bodega-text {
     max-width: 200px;
     font-size: 14px;
   }
-/*
-  .bodega-container-details {
-    max-width: 280px;
-  } */
-/*
-  .img-winerie-big {
-    width: 300px;
-  } */
 }
 
 

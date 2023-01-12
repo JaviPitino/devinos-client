@@ -23,7 +23,6 @@ function ShowWishList() {
   const showWishList = async () => {
     try {
       const { data } = await getWishlistService(id, user._id);
-      console.log(data.wishlist);
       setWineWished(data.wishlist);
       setIsLoading(false);
     } catch (err) {
@@ -54,7 +53,7 @@ function ShowWishList() {
                     </div>
                     <div className="fav-info">
                       <h4 className="title-wish">{item.name}</h4>
-                      <span>
+                      <span className="wish-tipo">
                         {" "}
                         {item.tipo} | {item.year}
                       </span>

@@ -19,33 +19,41 @@
   width: 350px;
   opacity: .8;
   transition: transform .4s;
-  background-color: white;
+  background-color: rgba(0, 0, 0, .4);
 }
 .wish-container:hover {
   /* background-color: white; */
   border-radius: 12px;
   opacity: 1;
   transform: scale(1.08);
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .title-wish {
   text-align: left;
   font-size: 1em;
   margin: 0;
+  color: white;
 }
 
 .img-wish {
   padding-right: 1em;
 }
 
+.wish-tipo {
+  color: white;
+}
+
 .wish-likes-container {
   padding-top: 5px;
   display: flex;
   align-items: center;
+  color: white;
 }
 
 .wish-likes {
   font-size: .9em;
+  color: white;
 }
 
 .likes-wishlist {

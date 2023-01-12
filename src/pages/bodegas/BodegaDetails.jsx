@@ -5,7 +5,6 @@ import {
   getBodegaDetailsService,
 } from "../../services/bodegas.services";
 import IsAdmin from "../../components/IsAdmin";
-import { Button } from "react-bootstrap";
 import { AuthContext } from "../../context/auth.context";
 
 function BodegaDetails() {
@@ -47,21 +46,9 @@ function BodegaDetails() {
   }
 
   return (
+    <>
     <div className="super-container-wineries">
-      {isLogin && (
-        <IsAdmin>
-          <div className="container-btns-edit centered">
-            <Link className="edit-bodega-btn" to={`/bodegas/${id}/edit`}>
-              {" "}
-              <button className="btn-edit-wine">Editar</button>{" "}
-            </Link>
-            <button className="btn-edit-wine" onClick={handleDelete}>
-              Borrar
-            </button>
-          </div>
-        </IsAdmin>
-      )}
-      <div className="container-grande">
+      <div className="container-grande2">
         <div>
           <img
             className="img-winerie-big"
@@ -74,7 +61,21 @@ function BodegaDetails() {
           <h4 className="title-bodega-wine-detail2">{bodegaDetails.name}</h4>
           <p className="winerie-region2">{bodegaDetails.region}</p>
           <p className="winerie-description">{bodegaDetails.description}</p>
+          {isLogin && (
+        <IsAdmin>
+          <div className="container-btns-edit">
+            <Link className="edit-bodega-btn" to={`/bodegas/${id}/edit`}>
+              {" "}
+              <button className="btn-edit-wine">Editar</button>{" "}
+            </Link>
+            <button className="btn-edit-wine" onClick={handleDelete}>
+              Borrar
+            </button>
+          </div>
+        </IsAdmin>
+      )}
         </div>
+      </div>
       </div>
       <h5 className="title-other-wines">Vinos de la bodega:</h5>
       <div className="wineries-wrap-container">
@@ -109,7 +110,8 @@ function BodegaDetails() {
           })}
         </div>
       </div>
-    </div>
+      </>
+ 
   );
 }
 
