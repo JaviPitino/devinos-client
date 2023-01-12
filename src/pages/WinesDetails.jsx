@@ -49,35 +49,19 @@ function WinesDetails() {
   }
 
   return (
-    <div>
-      {/* <h3 className="title">Detalles</h3> */}
-      <div className="container-grande">
+    <section className="container-grande">
+      <div className="info-wine-big">
+        
         <div className="wine-container-det">
+          <header className="wine-header">
           <div>
             <img
               className="img-wine-det"
               src={wineDetail.image}
               alt="img-wine"
-              width={120}
             />
           </div>
           <div className="info-wine">
-          {isLogin && (
-              <>
-                <IsAdmin>
-                  <div className="container-btns-edit">
-                    <Link className="btn-edit-wine separador" to={`/wines/${id}/edit`}>
-                      {" "}
-                      Editar Vino{" "}
-                    </Link>
-                    <button className="btn-edit-wine separador" onClick={handleDelete}>
-                      Borrar Vino
-                    </button>
-                  </div>
-                </IsAdmin>
-                {/* <CommentSection /> */}
-              </>
-            )}
             <h4 className="wine-title-det">{wineDetail.name}</h4>
             <p className="wine-type"> {wineDetail.tipo}</p>
             <h6 className="wine-year">{wineDetail.year}</h6>
@@ -92,43 +76,71 @@ function WinesDetails() {
                 );
               })}
             </p>
-            <p className="wine-description">{wineDetail.description}</p>
-            { isLogin &&
-            <>
-            <div className="likes-wishlist">
-            <Likes wineDetail={wineDetail} reload={getWineDetails} />
-            <WishList wineDetail={wineDetail} reload={getWineDetails}/>
-            </div>
-            <ShowComments />
-            </>
-            }
-            <hr />
           </div>
+          </header>
+          <article className="info-wine">
+            <p className="wine-description">{wineDetail.description}</p>
+            {isLogin && (
+          <>
+            <IsAdmin>
+              <div className="container-btns-edit">
+                <Link
+                  className="btn-edit-wine separador"
+                  to={`/wines/${id}/edit`}
+                >
+                  {" "}
+                  Editar Vino{" "}
+                </Link>
+                <button
+                  className="btn-edit-wine separador"
+                  onClick={handleDelete}
+                >
+                  Borrar Vino
+                </button>
+              </div>
+            </IsAdmin>
+            {/* <CommentSection /> */}
+          </>
+        )}
+            
+            {isLogin && (
+              <>
+                <div className="likes-wishlist">
+                  <Likes wineDetail={wineDetail} reload={getWineDetails} />
+                  <WishList wineDetail={wineDetail} reload={getWineDetails} />
+                </div>
+                <ShowComments />
+              </>
+            )}
+            <hr />
+          </article>
         </div>
-        <div className="card-bodega">
-          <h5 className="title-bodega-wine-detail">La bodega</h5>
-          <div className="bodega-container-details">
-            <div className="img-bodega-wine-details">
-              <img className="img-bodega-detail"
-                src={wineDetail.bodega.image}
-                alt="imagen de la bodega"
-                width={250}
-              />
-            </div>
-            <div className="container-bodega-text">
-              <span className="bodega-wine-name">{wineDetail.bodega.name}</span>
-              <p className="bodega-wine-region">{wineDetail.bodega.region}</p>
-              <p className="bodega-wine-description">
-                {wineDetail.bodega.description}
-              </p>
+      </div>
+
+      <div className="card-bodega">
+        <h5 className="title-bodega-wine-detail">La bodega</h5>
+        <div className="bodega-container-details">
+          <div className="img-bodega-wine-details">
+            <img
+              className="img-bodega-detail"
+              src={wineDetail.bodega.image}
+              alt="imagen de la bodega"
+              width={250}
+            />
+          </div>
+          <div className="container-bodega-text">
+            <span className="bodega-wine-name">{wineDetail.bodega.name}</span>
+            <p className="bodega-wine-region">{wineDetail.bodega.region}</p>
+            <p className="bodega-wine-description">
+              {wineDetail.bodega.description}
+            </p>
             <Link to={`/bodegas/${wineDetail.bodega._id}`} className="leer-mas">
               Leer más
             </Link>
-            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
