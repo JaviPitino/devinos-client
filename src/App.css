@@ -19,6 +19,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 /* **** NAVBAR **** */
@@ -111,7 +112,7 @@
 }
 
 .saludo {
-  border: 5px solid #b8b8b8;
+  border: 5px solid black;
   margin: 10px 0;
   width: 300px;
   border-radius: 50px;
@@ -124,12 +125,14 @@
   border-radius: 50px;
   justify-content: center;
   text-transform: uppercase;
+  color: white;
 }
 
 .edit-perfil {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 1em;
+  color: white;
 }
 
 .margin-perfil {
@@ -166,6 +169,7 @@
 .error {
   padding-bottom: 15px;
   grid-area: 6 / 1 / 7 / 4;
+  color: red;
 }
 
 /* **** HOME **** */
@@ -412,6 +416,18 @@ p {
 }
 
 /* **** FORMS **** */
+/* --- SIGNUP ---- */
+.container-sign {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.form-sign-container {
+  width: 350px;
+}
+
+/* --- EDIT PROFILE ---- */
 .container-edit {
   display: flex;
   justify-content: center;
@@ -426,10 +442,6 @@ p {
 
 .form-edit-container {
   margin-top: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
 }
 
 .edit-label {
@@ -448,17 +460,19 @@ p {
   justify-content: flex-start;
   padding: 5px 10px;
   margin-bottom: 15px;
-  /* width: 75%; */
+  width: 100%;
   min-width: 200px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   border: 0.2px solid #b8b8b8;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   letter-spacing: 0.8px;
+  background-color: transparent;
+  color: white;
 }
 
 .edit-input:focus {
-  outline: 2.5px solid #e0e0e0;
+  outline: 2.5px solid #bb1919;
 }
 
 #image {
@@ -470,6 +484,7 @@ p {
   justify-content: space-between;
   align-items: center;
   width: 450px;
+  margin-top: 20px;
 }
 
 .img-edit-label-file {
@@ -482,25 +497,26 @@ p {
 }
 
 .edit-label-file {
-  height: 35px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 200px;
-  padding: 5px 2px;
+  background-color: transparent;
+    border: 0.2px solid white;
   color: whitesmoke;
-  font-size: 14px;
-  margin-bottom: 15px;
-  margin-top: 20px;
-  background-color: #bb1919;
   cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  height: 35px;
+  justify-content: center;
+  padding: 5px 2px;
   transition: 0.3s background-color ease-in-out;
+  width: 200px;
 }
 
 .edit-label-file:hover {
-  border: 0.5px solid #b8b8b8;
-  background-color: white;
-  color: #b8b8b8;
+  border: 0.2px solid #bb1919;
+  color: #bb1919;
+  transition: .3s ease border;
+  transition: .3s ease color;
 }
 
 .edit-label-file:focus {
@@ -514,18 +530,20 @@ p {
 }
 
 .btn-edit-perfil {
-  height: 35px;
-  margin-top: 10px;
-  width: 150px;
-  border: 0.2px solid #b8b8b8;
-  background-color: white;
-  color: #b8b8b8;
+  background-color: transparent;
+  border: 0.2px solid white;
+  color: white;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
+  height: 33px;
+  width: 150px;
 }
 
 .btn-edit-perfil:hover {
   border: 0.2px solid #bb1919;
   color: #bb1919;
+  transition: .3s ease border;
+  transition: .3s ease color;
 }
 
 /* **** MEDIA QUERIES **** */
@@ -547,12 +565,9 @@ p {
   }
 
   .container-edit {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 350px;
-    margin: 0 auto;
   }
 
   .form-edit-container {
@@ -581,9 +596,6 @@ p {
     padding-right: 0.8em;
     padding-top: 0.5em;
   }
-  .container-edit {
-    flex-direction: column;
-  }
 
   .form-edit-container {
     max-width: 350px;
@@ -596,7 +608,6 @@ p {
   }
 
   .container-edit-label-file {
-    margin-top: 20px;
     width: 350px;
   }
 
@@ -624,6 +635,8 @@ p {
   .col {
     justify-content: center !important;
   }
+
+
 }
 
 @media (max-width: 380px) {
@@ -684,6 +697,10 @@ p {
   .col2 {
     display: none;
   }
+
+  .form-sign-container {
+    padding: 0 35px;
+  }
 }
 
 @media (max-width: 330px) {
@@ -715,10 +732,6 @@ p {
     width: 180px;
   }
 
-  .container-edit {
-    width: 300px;
-  }
-
   .form-edit-container {
     max-width: 250px;
   }
@@ -736,9 +749,6 @@ p {
     width: 200px;
   }
 
-  .edit-input {
-    width: 130px;
-  }
   .btn-edit-perfil {
     margin: 0;
     width: 120px;
@@ -746,5 +756,8 @@ p {
 
   .img-edit-label-file {
     margin-left: 0;
+  }
+  .form-sign-container {
+    width: 280px;
   }
 }

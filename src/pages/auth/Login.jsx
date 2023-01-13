@@ -50,23 +50,18 @@ function Login() {
   }
 
   return (
-    <div className="form-center container-fluid">
-      <div className="row col-3 map_section">
-        <h3>Login</h3>
-      
-      <Form onSubmit={handleLogin}>
-      <Form.Group className="mb-4" controlId="formBasicEmail">
-        <Form.Control type="email" name="email" value={email} onChange={handleEmailChange} placeholder="Inserta tu email" />
-      </Form.Group>
-      <Form.Group>
-        <Form.Control type="password" name="password" value={password} onChange={handlePasswordChange} placeholder="Contraseña" />
-      </Form.Group>
-        { errorMessage !== null && <p>{errorMessage}</p> }
-        <br />
-        <Button type="submit" variant="danger">Acceder</Button>
-      </Form>
-      </div>
-    </div>
+    <article className="container-sign"> 
+      <form onSubmit={handleLogin} className="form-sign-container">
+      <label className="edit-label">Email </label>
+        <input className="edit-input" type="email" name="email" value={email} onChange={handleEmailChange} />
+        <label className="edit-label">Contraseña </label>
+        <input className="edit-input" type="password" name="password" value={password} onChange={handlePasswordChange} />
+        <div className="error">
+            {errorMessage !== null && <p>{errorMessage}</p>}
+        </div>
+        <button type="submit" className="btn-edit-perfil">Acceder</button>
+      </form>
+    </article>
   )
 }
 

@@ -107,7 +107,7 @@ function WishList({wineDetail}) {
           },
         }}
       />
-      {!wishedWine ? <BsBookmark className='bookmark' type='submit' onClick={handleWish} style={{color: '#b8b8b8'}}>Añadir a la wishlist</BsBookmark> : <BsBookmarkFill  className='bookmark' type='submit' onClick={handleWish} style={{color: '#bb1919'}}>Añadido</BsBookmarkFill>
+      {!wishedWine ? <BsBookmark className='bookmark' type='submit' onClick={handleWish} style={{color: '#b8b8b8', width: '25px'}}>Añadir a la wishlist</BsBookmark> : <BsBookmarkFill  className='bookmark' type='submit' onClick={handleWish} style={{color: '#bb1919', width: '25px'}}>Añadido</BsBookmarkFill>
       }
     </>
   );

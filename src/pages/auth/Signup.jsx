@@ -47,31 +47,28 @@ function Signup() {
 
 
   return (
-    <div className="form-center container-fluid">
-      <div className="row col-4 map_section">
-        <Form onSubmit={handleSignup}>
-          <Form.Group className="mb-3 label-form" controlId="exampleForm.ControlInput1">
-            <Form.Label>Nombre: </Form.Label>
-            <Form.Control
+    <article className="container-sign">
+        <form onSubmit={handleSignup}  className="form-sign-container" >
+            <label className="edit-label">Nombre: </label>
+            <input
+              className="edit-input"
               type="text"
               name="username"
               value={username}
               onChange={handleUsernameChange}
               autoFocus
             />
-          </Form.Group>
-          <Form.Group className="mb-3 label-form" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email: </Form.Label>
-            <Form.Control
+            <label className="edit-label">Email </label>
+            <input
+              className="edit-input"
               type="email"
               name="email"
               value={email}
               onChange={handleEmailChange}
             />
-          </Form.Group>
-          <Form.Group className="mb-3 label-form" controlId="exampleForm.ControlInput1">
-            <Form.Label>Contraseña: </Form.Label>
-            <Form.Control
+            <label className="edit-label">Contraseña </label>
+            <input
+              className="edit-input"
               type="password"
               name="password"
               value={password}
@@ -80,11 +77,9 @@ function Signup() {
           <div className="error">
             {errorMessage !== null && <p>{errorMessage}</p>}
           </div>
-          </Form.Group>
-          <Button type="submit" className="btn-logout btn-sign" >Registrar</Button>
-        </Form>
-      </div>
-    </div>
+          <button type="submit" className="btn-edit-perfil">Registrar</button>
+        </form>
+        </article>
   );
 }
 

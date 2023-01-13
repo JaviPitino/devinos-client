@@ -4,8 +4,6 @@ import { AuthContext } from "../../context/auth.context";
 import { getProfileDetailsService } from "../../services/auth.service";
 import { NavLink } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -33,15 +31,13 @@ function Profile() {
 
   return (
     <div className="container-perfil">
-      {/* <p>Hola: </p>
-      <h4 className='saludo'> {profileDetails.username[0].toUpperCase() + profileDetails.username.slice(1)}</h4>
-      <img className="saludo" src={profileDetails.image} alt="imagen perfil" width={30} /> */}
       {user !== null && (
         <div className="container-perfil-second">
-          <h4>
-           <span className="edit-perfil">Bienvenid@: </span>  
+          <h4 className="name-perfil">
+           <span className="edit-perfil">Bienvenid@: <strong>
             {profileDetails.username[0].toUpperCase() +
               profileDetails.username.slice(1)}
+              </strong></span> 
           </h4>
           <img
             className="saludo"

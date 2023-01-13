@@ -12,6 +12,12 @@
 .comment-box {
   text-align: left;
   max-height: 200px;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.comment-box:hover {
   overflow: scroll;
   overflow-x: hidden;
 }
