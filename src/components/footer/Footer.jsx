@@ -1,58 +1,43 @@
 import React from "react";
 import "./footer.css";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import { BsLinkedin, BsGithub, BsBriefcaseFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md'
 
 function Footer() {
   const { isLogin } = useContext(AuthContext);
 
   return (
     <div className="footer-container">
-      <div className="col">
-        <div className="firma">
-            &copy; Created & designed by <strong>Javier López</strong>
-        </div>
+      <div className="col3">
+          <div className="list-footernav">
+            {/* <span>Contacta: </span> */}
+          <a className="link-footer" href='https://www.linkedin.com/in/javier-lopez-diaz/'>
+            <BsLinkedin />
+            </a>
+            <a className="link-footer" href="https://github.com/JaviPitino" >
+             <BsGithub />
+            </a>
+            <a className="link-footer" href='https://javilopez.netlify.app'>
+              <BsBriefcaseFill />
+            </a>
+            <a className="link-footer" href='mailto:javierpitino@gmail.com'>
+              <MdEmail />
+            </a>
+          </div>
       </div>
-      <div className="col2">
+      {/* <div className="col2">
         <img
           src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272916/wines-routes/logo-devinos-brand-bold_zgeud2.png"
           alt="logo-devinos"
           width={40}
         />
-      </div>
-      <div className="col3">
-        {isLogin === true ? (
-          <div className="list-footernav">
-            <Link className="link-footer" to={"/wines"}>
-              Vinos
-            </Link>
-            <Link className="link-footer" to={"/bodegas"}>
-              Bodegas
-            </Link>
-            <Link className="link-footer" to={"/profile"}>
-              Mi perfil
-            </Link>
-            <Link className="link-footer" to={"/wishlist"}>
-              Mi lista de favoritos
-            </Link>
-          </div>
-        ) : (
-          <div className="list-footernav">
-            <Link className="link-footer" to={"/wines"}>
-              Vinos
-            </Link>
-            <Link className="link-footer" to={"/bodegas"}>
-              Bodegas
-            </Link>
-            <Link className="link-footer" to={"/signup"}>
-              Registrar
-            </Link>
-            <Link className="link-footer" to={"/login"}>
-              Acceder
-            </Link>
-          </div>
-        )}
+      </div> */}
+      <div className="col">
+        <div className="list-footernav">
+            &copy; Created & designed by <strong>Javier López</strong>
+        </div>
       </div>
     </div>
   );

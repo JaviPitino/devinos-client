@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import uploadService from "../services/profile.service";
 import { addNewWineService } from "../services/wines.services";
 import { bodegasListService } from "../services/bodegas.services";
-import { Form, Button } from "react-bootstrap";
+import { BsUpload } from "react-icons/bs";
 
 function WinesCreate() {
   const navigate = useNavigate();
@@ -92,67 +92,60 @@ function WinesCreate() {
   };
 
   return (
-    <div className="form-center container-fluid">
-      <div className="row col-4 map_section">
-        <h4>Añade tu vino favorito</h4>
-
-        <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Control
+    <div className="container-edit">
+        <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-edit-container">
+            <input
+              className="edit-input"
               type="text"
               name="name"
               onChange={handleChange}
               value={form.name}
               placeholder="Nombre"
             />
-          </Form.Group>
-          <br />
-          <Form.Select
+          <select
+            className="select-input"
             name="bodega"
             htmlFor="bodega"
             onChange={handleChange}
-            placeholder="Elige una bodega"
             value={form.bodega}
             >
-            <option>Elige una bodega</option>
+            <option className="select-default">Elige una bodega</option>
             {allBodegas.map((each) => {
               return(
-                <option value={each._id}>{each.name}</option>
+                <option className="select-default" value={each._id}>{each.name}</option>
               )
             })}
-          </Form.Select>
-          <br />
-          <Form.Select
+          </select>
+          <select
+            className="select-input"
             type="text"
             name="tipo"
             onChange={handleChange}
             value={form.tipo}
           >
-            <option value="opcion1" disabled={true}>
+            <option className="select-default" value="opcion1" disabled={true}>
               Elige un tipo
             </option>
-            <option value="Tinto">Tinto</option>
-            <option value="Rosado">Rosado</option>
-            <option value="Blanco">Blanco</option>
-          </Form.Select>
-          <br />
-          <Form.Select name="uva" onChange={handleChange} multiple>
+            <option className="select-default" value="Tinto">Tinto</option>
+            <option className="select-default" value="Rosado">Rosado</option>
+            <option className="select-default" value="Blanco">Blanco</option>
+          </select>
+          <select className="select-input" name="uva" onChange={handleChange} multiple>
             {uva.map((eachUva) => {
-              return <option>{eachUva}</option>;
+              return <option className="option-uva">{eachUva}</option>;
             })}
-          </Form.Select>
-          <br />
-          <Form.Group>
-            <Form.Control
+          </select>
+            <input
+              className="edit-input"
               type="number"
               name="year"
               onChange={handleChange}
               value={form.year}
               default="2021"
             />
-          </Form.Group>
-          <br />
-          <Form.Control
+          <textarea
+            className="edit-input"
             placeholder="Escribe la descripción del vino..."
             type="text"
             name="description"
@@ -163,33 +156,39 @@ function WinesCreate() {
             as="textarea"
           />
           <br />
-          <Form.Select
+          <select
+            className="select-input"
             htmlFor="puntuacion"
             type="number"
             name="puntuacion"
             onChange={handleChange}
             value={form.puntuacion}
           >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </Form.Select>
+            <option className="select-default" value="1">1</option>
+            <option className="select-default" value="2">2</option>
+            <option className="select-default" value="3">3</option>
+            <option className="select-default" value="4">4</option>
+            <option className="select-default" value="5">5</option>
+          </select>
           <br />
           {/* <label htmlFor="image">Imagen</label> */}
-          <Form.Group>
-            <Form.Control
+          <div className="container-add-label-file">
+            <label className="add-label-file" htmlFor="image">
+              selecciona una imagen &nbsp;&nbsp;
+              <BsUpload />
+              <span className="add-label-icon"></span>{" "}
+            </label>
+            <input
+              className="edit-input"
+              id="image"
               type="file"
               name="image"
               onChange={handleChangeImage}
-              // value={image}
             />
-          </Form.Group>
-          <br />
-          <button variant="danger">Crear</button>
-        </Form>
-      </div>
+          <button className="btn-edit-perfil">Crear</button>
+          </div>
+          </div>
+        </form>
     </div>
   );
 }

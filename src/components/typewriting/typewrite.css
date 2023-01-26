@@ -1,0 +1,20 @@
+.typewrite {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.typewrite span {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: 1.5px;
+}
+
+.container-typewrite {
+  padding: 20px;
+}

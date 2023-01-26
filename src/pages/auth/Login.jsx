@@ -53,7 +53,7 @@ function Login() {
     <article className="container-sign"> 
       <form onSubmit={handleLogin} className="form-sign-container">
       <label className="edit-label">Email </label>
-        <input className="edit-input" type="email" name="email" value={email} onChange={handleEmailChange} />
+        <input className="edit-input" type="email" name="email" value={email} onChange={handleEmailChange} autoFocus/>
         <label className="edit-label">Contraseña </label>
         <input className="edit-input" type="password" name="password" value={password} onChange={handlePasswordChange} />
         <div className="error">

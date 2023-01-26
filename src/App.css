@@ -3,9 +3,11 @@
 :root {
   scroll-behavior: smooth;
   --bs-dark-rgb: 0, 0, 0 !important;
+  background-color: #000;
 }
 
 .App {
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,6 +22,28 @@
   background-attachment: fixed;
   background-size: cover;
   overflow-x: hidden;
+}
+
+/* **** SCROLLBAR **** */
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(102, 102, 102);
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* **** NAVBAR **** */
@@ -174,15 +198,30 @@
 
 /* **** HOME **** */
 .super-container-home {
-  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 50px 35px 0 35px; 
 }
 
 .container-home {
   padding-top: 20px;
+}
+
+.line {
+  width: 60%;
+  border-bottom: .5px solid white;
+}
+
+.article-home {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  width: 60%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 /* **** WINES **** */
@@ -462,7 +501,6 @@ p {
   margin-bottom: 15px;
   width: 100%;
   min-width: 200px;
-  /* border-radius: 10px; */
   border: 0.2px solid #b8b8b8;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
@@ -517,12 +555,13 @@ p {
   color: #bb1919;
   transition: .3s ease border;
   transition: .3s ease color;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-.edit-label-file:focus {
+/* .edit-label-file:focus {
   background-color: #bb1919 !important;
   color: white !important;
-}
+} */
 
 .edit-label-icon {
   margin-left: 10px;
@@ -544,6 +583,105 @@ p {
   color: #bb1919;
   transition: .3s ease border;
   transition: .3s ease color;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* ---- ADD WINE ---- */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+}
+
+.select-input {
+  justify-content: flex-start;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  min-width: 200px;
+  border: 0.2px solid #b8b8b8;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.8px;
+  background-color: transparent;
+  color: white;
+}
+
+.select-input:focus {
+  outline: 2.5px solid #bb1919;
+}
+
+.select-input::-ms-expand {
+  display: none;
+}
+.select-input:hover {
+  border-color: #888;
+}
+.select-input:focus {
+  outline: 2.5px solid #bb1919;
+  color: #222; 
+}
+
+.select-input .select-default {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.option-uva {
+  background-color: transparent;
+  color: white;
+}
+.select-default {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.container-add-label-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.add-label-file {
+    align-items: center;
+    background-color: transparent;
+      border: 0.2px solid white;
+    color: whitesmoke;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    height: 35px;
+    justify-content: center;
+    padding: 5px 2px;
+    transition: 0.3s background-color ease-in-out;
+    width: 200px;
+}
+
+.add-label-file:hover {
+  border: 0.2px solid #bb1919;
+  color: #bb1919;
+  transition: .3s ease border;
+  transition: .3s ease color;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/*  ---- EDIT WINE ---- */
+.img-wine-edit {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.container-wine-edit-label-file {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 /* **** MEDIA QUERIES **** */
@@ -552,17 +690,13 @@ p {
     display: flex;
     justify-content: flex-start;
   }
+
+  .form-container {
+    width: 70%;
+  }
 }
 
 @media (max-width: 600px) {
-
-  .col2 {
-    display: none;
-  }
-
-  .col3 {
-    display: none;
-  }
 
   .container-edit {
     flex-direction: column;
@@ -577,9 +711,6 @@ p {
 
   .img-edit-label-file {
     margin-left: 0;
-  }
-  .col {
-    justify-content: center !important;
   }
 }
 
@@ -632,11 +763,28 @@ p {
     margin-right: 0;
   }
 
-  .col {
-    justify-content: center !important;
+  .footer-container {
+    flex-direction: column;
   }
 
+  .list-footernav {
+    padding: 0px;
+  }
 
+  .container-add-label-file {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container-wine-edit-label-file {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-label-file {
+    margin-bottom: 25px;
+    width: 260px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -689,17 +837,12 @@ p {
     margin-right: 0;
   }
 
-  .col {
-    display: flex;
-    justify-content: center !important;
-  }
-
-  .col2 {
-    display: none;
-  }
-
   .form-sign-container {
     padding: 0 35px;
+  }
+
+  .form-container {
+    width: 75%;
   }
 }
 
@@ -746,6 +889,10 @@ p {
 
   .edit-label-file {
     margin-bottom: 25px;
+    width: 200px;
+  }
+
+  .add-label-file {
     width: 200px;
   }
 

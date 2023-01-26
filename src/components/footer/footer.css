@@ -1,18 +1,17 @@
 .footer-container {
-  /* margin-top: auto; */
   background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  padding: 10px 0;
   overflow-x: hidden;
 }
 
 .list-footernav {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  list-style: none;
+  padding-bottom: 5px;
+  justify-content: center;
 }
 
 .link-footer {
@@ -20,7 +19,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 5px 15px;
-  font-size: 12px;
+  font-size: 25px;
   color: white!important;
 }
 
@@ -30,16 +29,5 @@
   font-family: 'Roboto', sans-serif;
   max-width: 300px;
   font-size: 12px;
-  color: white;
-  padding-left: 2em;
-  padding-right: 2em;
-}
-
-.col2 {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
-.col3 {
   color: white;
 }
