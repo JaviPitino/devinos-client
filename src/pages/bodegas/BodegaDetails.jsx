@@ -6,6 +6,7 @@ import {
 } from "../../services/bodegas.services";
 import IsAdmin from "../../components/IsAdmin";
 import { AuthContext } from "../../context/auth.context";
+import Loading from "../../components/Loading/Loading";
 
 function BodegaDetails() {
   const { isLogin } = useContext(AuthContext);
@@ -42,7 +43,7 @@ function BodegaDetails() {
 
   // Loading o spinner
   if (!bodegaDetails) {
-    return <h3>...Loading</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (

@@ -16,7 +16,7 @@ function Search(props) {
         <form className="form">
           <label htmlFor="search"></label>
           <input
-            className="form-input"
+            className="edit-input"
             type="text"
             name="search"
             placeholder="Busca tu vino"

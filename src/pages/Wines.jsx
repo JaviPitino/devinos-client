@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { winesListService } from "../services/wines.services";
 import Search from "../components/Search";
+import Loading from "../components/Loading/Loading";
 
 function Wines() {
   const navigate = useNavigate();
 
   // 1. Crear estados
-  const [wines, setWines] = useState([]);
+  const [wines, setWines] = useState(null);
   const [allWinesToDisplay, setAllWinesToDisplay] = useState([]);
 
   // 2. ComponentDidMount
@@ -96,7 +97,7 @@ function Wines() {
   };
 
   if (!wines) {
-    return <h3>...Loading</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (

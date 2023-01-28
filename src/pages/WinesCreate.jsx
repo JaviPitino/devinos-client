@@ -4,6 +4,7 @@ import uploadService from "../services/profile.service";
 import { addNewWineService } from "../services/wines.services";
 import { bodegasListService } from "../services/bodegas.services";
 import { BsUpload } from "react-icons/bs";
+import Loading from "../components/Loading/Loading";
 
 function WinesCreate() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ function WinesCreate() {
   const [image, setImage] = useState("");
 
   // Estados para mostrar las bodegas
-  const [allBodegas, setAllBodegas] = useState([]);
+  const [allBodegas, setAllBodegas] = useState(null);
 
   const uva = [
     "Syrah",
@@ -90,6 +91,10 @@ function WinesCreate() {
       navigate("/error");
     }
   };
+
+  if(!allBodegas) {
+    return <Loading />
+  }
 
   return (
     <div className="container-edit">

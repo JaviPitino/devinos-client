@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import uploadService from "../../services/profile.service";
 import { addNewBodegaService } from "../../services/bodegas.services";
-import { Form } from "react-bootstrap";
+import { BsUpload } from "react-icons/bs";
 import { winesListService } from "../../services/wines.services";
+import Loading from "../../components/Loading/Loading";
 
 function BodegasCreate() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function BodegasCreate() {
   const [wines, setWines] = useState([]);
 
   // Estado para mostrar todos los vinos en el Select del form
-  const [allWines, setAllWines] = useState([]);
+  const [allWines, setAllWines] = useState(null);
 
   // 2. handlers
   const handleNameChange = (e) => setName(e.target.value);
@@ -78,69 +79,68 @@ function BodegasCreate() {
   };
 
   if (!allWines) {
-    return <h3>...loading</h3>;
+    return <Loading />;
   }
 
   console.log(allWines);
 
   return (
-    <div className="form-center container-fluid">
-      <div className="row col-6 map_section">
-        <h4>Añade una bodega</h4>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
+    <div className="container-edit">
+        <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-edit-container">
+            <input
+              className="edit-input"
               type="text"
               name="name"
               onChange={handleNameChange}
               value={name}
               placeholder="Nombre"
             />
-          </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
+            <input
+              className="edit-input"
               type="text"
               name="region"
               onChange={handleRegionChange}
               value={region}
               placeholder="Ciudad (País)"
             />
-          </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
+            <input
+              className="edit-input"
               type="text"
               name="description"
               onChange={handleDescriptionChange}
               value={description}
               placeholder="Descripción de la bodega"
             />
-          </Form.Group>
-          <Form.Label>
-            Selecciona el vino o los vinos de la bodega
-          </Form.Label>
-          <Form.Select name="wines" onChange={handleWinesChange} multiple>
+          <select
+            className="select-input"
+            name="wines"
+            onChange={handleWinesChange} 
+            multiple
+          >
             {allWines.map((eachwine) => {
               return (
-                  <option value={eachwine._id}>{eachwine.name}</option>
+                  <option className="option-uva" value={eachwine._id}>{eachwine.name}</option>
               );
             })}
-          </Form.Select>
-          <br />
-          <Form.Group>
-            <Form.Control
-              onChange={handleImageChange}
+          </select>
+          <div className="container-add-label-file">
+            <label className="add-label-file" htmlFor="image">
+              selecciona una imagen &nbsp;&nbsp;
+              <BsUpload />
+              <span className="add-label-icon"></span>{" "}
+            </label>
+            <input
+              className="edit-input"
+              id="image"
               type="file"
               name="image"
-              width={200}
-            >
-              {/* Selecciona una imagen */}
-            </Form.Control>
-          </Form.Group>
-          <br />
-          <button> Agregar Bodega </button>
-          <br />
-        </Form>
-      </div>
+              onChange={handleImageChange}
+            />
+          <button className="btn-edit-perfil">Crear</button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

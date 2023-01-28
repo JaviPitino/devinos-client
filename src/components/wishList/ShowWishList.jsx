@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { getWishlistService } from "../../services/auth.service";
 import { BsHeartFill, BsHeart } from "react-icons/bs";
+import Loading from "../Loading/Loading";
 
 function ShowWishList() {
   const { user } = useContext(AuthContext);
@@ -32,7 +33,7 @@ function ShowWishList() {
 
   // spinner loading
   if (isLoading === true) {
-    return <h3>...Loading...</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (

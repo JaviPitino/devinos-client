@@ -9,6 +9,7 @@ import IsAdmin from "../components/IsAdmin";
 import Likes from "../components/Likes/Likes";
 import ShowComments from "../components/Comments/ShowComments";
 import WishList from "../components/wishList/WishList";
+import Loading from "../components/Loading/Loading";
 
 function WinesDetails() {
   const { isLogin } = useContext(AuthContext);
@@ -45,7 +46,7 @@ function WinesDetails() {
 
   // 4. El loading o Spinner
   if (wineDetail === null) {
-    return <h3>...Loading...</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (

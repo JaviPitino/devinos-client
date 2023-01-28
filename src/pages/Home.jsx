@@ -1,3 +1,4 @@
+import Loading from "../components/Loading/Loading";
 import Typewrite from "../components/typewriting/Typewrite";
 
 function Home() {
@@ -21,15 +22,7 @@ function Home() {
         <div className="line">
         </div>
         <div className="article-home" >
-          {/* <p>
-            DeVinos surge como proyecto personal para crecer como desarrollador web, es una aplicación MERN STACK construida con <b>React</b>. Los vinos disponibles, al igual que las bodegas, han sido creados en una base de datos en <b>MongoDB</b> y están escogidos al azar como una pequeña muestra de las posibilidades de la aplicación.
-          </p>
-          <p>
-          Como usuario registrado, puedes <b>comentar</b> los vinos que más te gusten, <b>añadir</b> el vino a tu <b>lista de favoritos</b>  y por supuesto, no olvides de darle <b>'Me Encanta'</b> a los vinos que más te gusten!.
-          </p>
-          <p>
-          El administrador puede crear tanto nuevos vinos como bodegas al igual que editarlos y actualizarlos.
-          </p> */}
+            <button className="btn-edit-perfil">Try it!</button>
         </div>
       </div>
   );

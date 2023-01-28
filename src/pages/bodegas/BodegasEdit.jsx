@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { bodegasListService, getBodegaDetailsService, editBodegaService } from "../../services/bodegas.services";
+import {
+  bodegasListService,
+  getBodegaDetailsService,
+  editBodegaService,
+} from "../../services/bodegas.services";
 import uploadService from "../../services/profile.service";
-import { Form } from 'react-bootstrap'
+import { BsUpload } from "react-icons/bs";
 import { winesListService } from "../../services/wines.services";
+import Loading from "../../components/Loading/Loading";
 
 function BodegasEdit() {
-
   const navigate = useNavigate();
-  const { id } = useParams()
+  const { id } = useParams();
 
   //1. Estados
   const [name, setName] = useState("");
   const [region, setRegion] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [wines, setWines] = useState([])
+  const [wines, setWines] = useState([]);
 
-  const [allWines, setAllWines] = useState([]);
+  const [allWines, setAllWines] = useState(null);
 
   // 2. Eventos, Handles
   const handleNameChange = (e) => setName(e.target.value);
@@ -44,7 +48,7 @@ function BodegasEdit() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
       const newBodega = {
@@ -52,145 +56,136 @@ function BodegasEdit() {
         region,
         description,
         wines,
-        image
+        image,
       };
 
       await editBodegaService(id, newBodega);
-      navigate(`/bodegas/${id}`)
-
-    } catch(err) {
-      navigate('/error')
+      navigate(`/bodegas/${id}`);
+    } catch (err) {
+      navigate("/error");
     }
-  }
+  };
 
   // ComponentDidMount
   useEffect(() => {
-    getAllBodegas()
-  }, [])
+    getAllBodegas();
+  }, []);
 
   const getAllBodegas = async () => {
-
     try {
       const response = await getBodegaDetailsService(id);
       const { name, region, description, image, wines } = response.data;
 
-      console.log(response.data)
-      setName(name)
-      setRegion(region)
-      setDescription(description)
-      setImage(image)
+      console.log(response.data);
+      setName(name);
+      setRegion(region);
+      setDescription(description);
+      setImage(image);
 
-      let filterArr = wines.map((each) =>{
-
-        if ( allWines )
-
-        return each.name
-      })
-      setWines(filterArr)
+      let filterArr = wines.map((each) => {
+        if (allWines) return each.name;
+      });
+      setWines(filterArr);
       // setWines(wines)
-
-    } catch(err) {
-      navigate('/error')
+    } catch (err) {
+      navigate("/error");
     }
-  }
+  };
 
   useEffect(() => {
-    getAllWines()
-  }, [])
+    getAllWines();
+  }, []);
 
   const getAllWines = async () => {
     try {
       const response = await winesListService();
-      
-    
-      setAllWines(response.data)
 
-
-    }catch(err) {
-      navigate('/error')
+      setAllWines(response.data);
+    } catch (err) {
+      navigate("/error");
     }
-  }
+  };
 
   // let union = [new Set([...wines, ...allWines])]
   // console.log(union);
 
-
-  console.log(wines)
-  console.log(allWines)
+  console.log(wines);
+  console.log(allWines);
 
   if (!allWines) {
-    return <h3>...loading</h3>;
+    return <Loading />;
   }
 
   return (
-    <div className="form-center container-fluid">
-      <div className="row col-6 map_section">
-        <h4>Editar bodega</h4>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              name="name"
-              onChange={handleNameChange}
-              value={name}
-              placeholder="Nombre"
-            />
-          </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              name="region"
-              onChange={handleRegionChange}
-              value={region}
-              placeholder="Ciudad (País)"
-            />
-          </Form.Group>
-          <Form.Group className="mb-4" controlId="formBasicEmail">
-            <Form.Control
-              type="text"
-              name="description"
-              onChange={handleDescriptionChange}
-              value={description}
-              placeholder="Descripción de la bodega"
-            />
-          </Form.Group>
-          <Form.Label>
-            Selecciona el vino o los vinos de la bodega
-          </Form.Label>
-          <Form.Select name="wines" onChange={handleWinesChange} multiple value={wines} required={true} >
-           
-            
+    <div className="container-edit">
+      <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-edit-container">
+          <input
+            className="edit-input"
+            type="text"
+            name="name"
+            onChange={handleNameChange}
+            value={name}
+          />
 
-              {allWines.map((eachwine) => {
-                return (
-
-                    <option key={eachwine._id} value={eachwine._id}>{eachwine.name}</option>
-                );
-              })}
-            
-            
-          </Form.Select>
-          <br />
-          <Form.Group>
-            <Form.Control
-              onChange={handleImageChange}
+          <input
+            className="edit-input"
+            type="text"
+            name="region"
+            onChange={handleRegionChange}
+            value={region}
+          />
+          <textarea
+            className="edit-input"
+            type="text"
+            name="description"
+            onChange={handleDescriptionChange}
+            value={description}
+            cols="60"
+            rows="5"
+          />
+          <select
+            className="select-input"
+            name="wines"
+            onChange={handleWinesChange}
+            multiple
+            value={wines}
+            required={true}
+          >
+            {allWines.map((eachwine) => {
+              return (
+                <option className="option-uva" key={eachwine._id} value={eachwine._id}>
+                  {eachwine.name}
+                </option>
+              );
+            })}
+          </select>
+          <div className="container-add-label-file">
+          <div className="img-wine-edit">
+          {image ? (
+              <img src={image} alt="winerie image" width={100} />
+            ) : (
+              <></>
+            )}
+          </div>
+            <label className="add-label-file" htmlFor="image">
+              selecciona una imagen &nbsp;&nbsp;
+              <BsUpload />
+              <span className="add-label-icon"></span>{" "}
+            </label>
+            <input
+              className="edit-input"
+              id="image"
               type="file"
               name="image"
-              width={200}
+              onChange={handleImageChange}
             />
-            {
-              image ? <img src={image} alt="winerie image" width={100}/> : <></>
-            }
-          </Form.Group>
-          <br />
-          <button> Actualizar bodega </button>
-          <br />
-        </Form>
-      </div>
+            <button className="btn-edit-perfil">Actualizar</button>
+          </div>
+        </div>
+      </form>
     </div>
-  
-  
-    )
+  );
 }
 
 export default BodegasEdit;

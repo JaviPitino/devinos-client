@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./bodegas.css";
 import { Link, useNavigate } from "react-router-dom";
 import { bodegasListService } from "../../services/bodegas.services";
+import Loading from "../../components/Loading/Loading";
 
 function Bodegas() {
   const navigate = useNavigate();
 
   // 1. crear estados
-  const [bodegas, setBodegas] = useState([]);
+  const [bodegas, setBodegas] = useState(null);
 
   // 2. Component Did Mount
   useEffect(() => {
@@ -29,7 +30,7 @@ function Bodegas() {
   };
 
   if (!bodegas) {
-    return <h3>...loading</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (

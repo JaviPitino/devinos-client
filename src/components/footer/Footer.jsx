@@ -13,13 +13,13 @@ function Footer() {
       <div className="col3">
           <div className="list-footernav">
             {/* <span>Contacta: </span> */}
-          <a className="link-footer" href='https://www.linkedin.com/in/javier-lopez-diaz/'>
+          <a className="link-footer" href='https://www.linkedin.com/in/javier-lopez-diaz/' target="blank">
             <BsLinkedin />
             </a>
-            <a className="link-footer" href="https://github.com/JaviPitino" >
+            <a className="link-footer" href="https://github.com/JaviPitino" target="blank">
              <BsGithub />
             </a>
-            <a className="link-footer" href='https://javilopez.netlify.app'>
+            <a className="link-footer" href='https://javilopez.netlify.app' target="blank">
               <BsBriefcaseFill />
             </a>
             <a className="link-footer" href='mailto:javierpitino@gmail.com'>

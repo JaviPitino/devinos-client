@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import { getProfileDetailsService } from "../../services/auth.service";
 import { NavLink } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
+import Loading from "../../components/Loading/Loading";
 
 function Profile() {
   const { user } = useContext(AuthContext);
@@ -26,7 +27,7 @@ function Profile() {
   };
 
   if (!profileDetails) {
-    return <h3>...Loading...</h3>;
+    return <h3><Loading /></h3>;
   }
 
   return (
