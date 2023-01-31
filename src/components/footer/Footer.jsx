@@ -27,16 +27,9 @@ function Footer() {
             </a>
           </div>
       </div>
-      {/* <div className="col2">
-        <img
-          src="https://res.cloudinary.com/dttp09igh/image/upload/v1673272916/wines-routes/logo-devinos-brand-bold_zgeud2.png"
-          alt="logo-devinos"
-          width={40}
-        />
-      </div> */}
       <div className="col">
         <div className="list-footernav">
-            &copy; Created & designed by <strong>Javier López</strong>
+            &copy; Created & designed by<strong>&nbsp;Javier López</strong>
         </div>
       </div>
     </div>

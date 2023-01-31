@@ -14,6 +14,10 @@
   justify-content: center;
 }
 
+.list-footernav > strong {
+  color: #bb1919;
+}
+
 .link-footer {
   display: flex;
   justify-content: space-around;
@@ -21,6 +25,11 @@
   padding: 5px 15px;
   font-size: 25px;
   color: white!important;
+}
+
+.link-footer:hover {
+  color: #bb1919!important;
+  transition: .3s;
 }
 
 .col {

@@ -93,7 +93,7 @@ function WishList({wineDetail}) {
           className: "",
           duration: 2000,
           style: {
-            background: "#5e2129",
+            background: "#bb1919",
             color: "#fff",
           },
 
@@ -102,7 +102,7 @@ function WishList({wineDetail}) {
             duration: 2000,
             theme: {
               primary: "green",
-              secondary: "black",
+              secondary: "#bb1919",
             },
           },
         }}
