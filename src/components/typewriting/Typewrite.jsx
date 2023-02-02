@@ -1,4 +1,4 @@
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import React, { useTypewriter, Cursor } from "react-simple-typewriter";
 import "./typewrite.css";
 
 function Typewrite() {
