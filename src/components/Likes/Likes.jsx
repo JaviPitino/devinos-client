@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './likes.css'
 import '../wishList/wishlist.css'
 import { BsHeartFill, BsHeart } from 'react-icons/bs'
