@@ -2,8 +2,7 @@ import axios from "axios";
 
 // Llamadas al BE
 const service = axios.create({
-  // baseURL: `${process.env.REACT_APP_SERVER_URL}/api`
-  baseURL: `https://devinos-backend.onrender.com/`
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/api`
 })
 
 // Aquí se envía el Token al BE
