@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  bodegasListService,
   getBodegaDetailsService,
   editBodegaService,
 } from "../../services/bodegas.services";

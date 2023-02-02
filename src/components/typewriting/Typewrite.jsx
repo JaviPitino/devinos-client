@@ -1,4 +1,5 @@
-import React, { useTypewriter, Cursor } from "react-simple-typewriter";
+import React from "react";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 import "./typewrite.css";
 
 function Typewrite() {
@@ -23,7 +24,8 @@ function Typewrite() {
     deleteSpeed: 40,
     // Tiempo entre palabra y palabra
     delaySpeed: 1300,
-  });
+  })
+
   return (
     <div className="typewrite"># <span>{text}</span> 
       <Cursor cursorColor='red' />
