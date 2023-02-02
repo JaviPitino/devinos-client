@@ -23,12 +23,12 @@ function Home() {
       <div className="line"></div>
       <div className="article-home">
         <p className="txt-home">
-       DeVinos es un proyecto realizado a modo de práctica utilizando el stack de tecnologías MERN, consistente en <strong>MongoDB, Express, React y Node.js.</strong> Ha sido una gran oportunidad para profundizar mis habilidades en <strong>desarrollo web</strong> y aplicaciones <strong>full-stack</strong>. Me concentré en construir una aplicación de usuario y administración de tareas, implementando características como autenticación de usuarios, lectura, creación, edición y actualización de tareas. Estoy muy orgulloso con el resultado y emocionado de seguir mejorando mis habilidades. Si te ha gustado el resultado puedes decírmelo <strong><a href={'https://www.linkedin.com/in/javier-lopez-diaz/'}>contactando conmigo</a></strong> en cualquiera de los enlaces de contacto.
+       DeVinos es un proyecto realizado utilizando el stack de tecnologías MERN, consistente en <strong>MongoDB, Express, React y Node.js.</strong> Ha sido una gran oportunidad para profundizar mis habilidades en <strong>desarrollo web</strong> y aplicaciones <strong>full-stack</strong>. Me concentré en construir una aplicación de usuario y administración de tareas, implementando características como autenticación de usuarios, lectura, creación, edición y actualización de tareas. Estoy muy orgulloso con el resultado y emocionado de seguir mejorando mis habilidades. Si te ha gustado el resultado puedes decírmelo <strong><a href={'https://www.linkedin.com/in/javier-lopez-diaz/'}>contactando conmigo</a></strong> en cualquiera de los enlaces de contacto.
         </p>
       </div>
       <div className="line"></div>
       <Link className="a-home" to={"/wines"}>
-        <button className="btn-edit-perfil">Entra !</button>
+        <button className="btn-edit-perfil">Entra</button>
       </Link>
     </div>
   );
