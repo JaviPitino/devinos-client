@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import uploadService from "../../services/profile.service";
 import { addNewBodegaService } from "../../services/bodegas.services";
