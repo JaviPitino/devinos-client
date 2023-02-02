@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading/Loading";
 import Typewrite from "../components/typewriting/Typewrite";
